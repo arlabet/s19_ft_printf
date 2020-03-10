@@ -14,20 +14,20 @@
 
 void	ft_print_num(int nbr)
 {
-	ft_putnbr(nbr);
+	ft_putnbr_fd(nbr, 1);
 }
 
 void	ft_print_num_uns(unsigned int nbr)
 {
-	ft_putnbr_u(nbr);
+	ft_putnbr_u_fd(nbr, 1);
 }
 
 void	ft_print_hexlow(unsigned int nbr)
 {
-	ft_putnbr_base(nbr, "0123456789abcdef");
+	ft_putnbr_base_fd(nbr, "0123456789abcdef", 1);
 }
 
 void	ft_print_hexup(unsigned int nbr)
 {
-	ft_putnbr_base(nbr, "0123456789ABCDEF");
+	ft_putnbr_base_fd(nbr, "0123456789ABCDEF", 1);
 }

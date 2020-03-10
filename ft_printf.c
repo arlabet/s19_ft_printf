@@ -51,17 +51,17 @@ int		check_format(const char *format, va_list argp)
 		{
 			i++;
 			if (format[i] == '%')
-				ft_putchar('%');
+				ft_putchar_fd('%', 1);
 			else if (check_type(format[i]) == 1)
 			{
 				if (apply_type(format[i], argp) == -1)
 					return (-1);
 			}
 			else if (check_type(format[i]) == 0)
-				ft_putchar(format[i]);
+				ft_putchar_fd(format[i], 1);
 		}
 		else
-			ft_putchar(format[i]);
+			ft_putchar_fd(format[i], 1);
 		i++;
 	}
 	return (i);

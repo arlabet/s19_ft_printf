@@ -12,9 +12,12 @@
 
 #include "libft.h"
 
-void	ft_putnbr_u(unsigned int n)
+void	ft_putnbr_u_fd(unsigned int n, int fd)
 {
-	if (n >= 10)
-		ft_putnbr_u((n / 10));
-	ft_putchar(((n % 10) + 48));
+	if (fd >= 0 && fd < OPEN_MAX)
+	{
+		if (n >= 10)
+			ft_putnbr_fd((n / 10), fd);
+		ft_putchar_fd(((n % 10) + 48), fd);
+	}
 }

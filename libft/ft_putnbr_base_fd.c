@@ -36,7 +36,7 @@ int		ft_size_base(char *base)
 	return (i);
 }
 
-void	ft_putnbr_base(size_t nb, char *base)
+void	ft_putnbr_base_fd(size_t nb, char *base, int fd)
 {
 	long int nbr;
 
@@ -47,10 +47,10 @@ void	ft_putnbr_base(size_t nb, char *base)
 	}
 	if (nbr < 0)
 	{
-		ft_putchar('-');
+		ft_putchar_fd('-', fd);
 		nbr = nbr * -1;
 	}
 	if (nbr >= ft_size_base(base))
-		ft_putnbr_base((nbr / ft_size_base(base)), base);
-	ft_putchar(base[nbr % ft_size_base(base)]);
+		ft_putnbr_base_fd((nbr / ft_size_base(base)), base, fd);
+	ft_putchar_fd(base[nbr % ft_size_base(base)], fd);
 }
