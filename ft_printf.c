@@ -6,27 +6,27 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/03/12 02:05:35 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/03/12 04:08:00 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		apply_type(char format, va_list argp)
+int		apply_type(const char *format, int i, va_list argp)
 {
-	if (format == 'c')
-		ft_print_char(va_arg(argp, int));
-	if (format == 's')
+	if (format[i] == 'c')
+		ft_print_char(va_arg(argp, int), format, i);
+	if (format[i] == 's')
 		ft_print_string(va_arg(argp, char *));
-	if (format == 'p')
+	if (format[i] == 'p')
 		ft_print_pointer(va_arg(argp, size_t));
-	if (format == 'd' || format == 'i')
+	if (format[i] == 'd' || format[i] == 'i')
 		ft_print_num(va_arg(argp, int));
-	if (format == 'u')
+	if (format[i] == 'u')
 		ft_print_num_uns(va_arg(argp, unsigned int));
-	if (format == 'x')
+	if (format[i] == 'x')
 		ft_print_hexlow(va_arg(argp, unsigned int));
-	if (format == 'X')
+	if (format[i] == 'X')
 		ft_print_hexup(va_arg(argp, unsigned int));
 	return (0);
 }
@@ -40,22 +40,16 @@ int		check_type(char format)
 		return (0);
 }
 
-unsigned int	ft_treat_space(const char *format, int i, va_list argp)
+int	ft_treat_space(const char *format, int i)
 {
-	unsigned int	start;
-	unsigned int	end;
-	char			*toatoi;
-	int				nbr;
+	const char	*tmp;
+	int			nbr;
 
-	start = (unsigned int)i;
 	while (ft_isdigit(format[i]))
-		i++;
-	end = i;
-	toatoi = ft_substr(format, start, (end - start));
-	nbr = ft_atoi(toatoi);
-	while (nbr--)
-		ft_putchar_fd(' ', 1);
-	return (end);
+		i--;
+	tmp = &format[i + 1];
+	nbr = ft_atoi(tmp);
+	return (nbr);
 }
 
 int		check_format(const char *format, va_list argp)
@@ -74,10 +68,10 @@ int		check_format(const char *format, va_list argp)
 		}
 		if (format[i] == '%' && begin)
 			ft_putchar_fd('%', 1);
-		if (ft_isdigit(format[i]) && begin)
-			i = ft_treat_space(format, i, argp);
+		while (ft_isdigit(format[i]) && begin)
+			i++;
 		if (check_type(format[i]) && begin)
-			apply_type(format[i], argp);
+			apply_type(format, i, argp);
 		else
 			ft_putchar_fd(format[i], 1);
 		i++;
