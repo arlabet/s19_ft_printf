@@ -4,6 +4,7 @@
 int main(void)
 {
   //ft_printf("%ss", "test");
-  //printf("%c",'\n');
-  ft_printf("%10s", "test");
+  printf("%5s", "test");
+  ft_printf("%5s", "test");
+  //printf("%tests", "papa");
 }
