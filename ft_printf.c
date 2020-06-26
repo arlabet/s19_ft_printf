@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/26 23:41:43 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/26 23:42:56 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_treat_space(const char *format, int end)
 {
 	const char	*tmp;
 	int			nbr;
-	int 		start;
+	int			start;
 
 	start = end;
 	while (ft_isdigit(format[start]))
