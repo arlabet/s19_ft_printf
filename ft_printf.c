@@ -6,13 +6,13 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/26 23:14:50 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/26 23:41:43 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_apply_type(const char *format, int i, va_list argp)
+void	ft_apply_type(const char *format, int i, va_list argp)
 {
 	if (format[i] == 'c')
 		ft_print_char(va_arg(argp, int), format, i);
@@ -28,7 +28,6 @@ int		ft_apply_type(const char *format, int i, va_list argp)
 		ft_print_hexlow(va_arg(argp, unsigned int));
 	if (format[i] == 'X')
 		ft_print_hexup(va_arg(argp, unsigned int));
-	return (0);
 }
 
 int		ft_check_type(char format)
@@ -40,15 +39,18 @@ int		ft_check_type(char format)
 		return (0);
 }
 
-int		ft_treat_space(const char *format, int i)
+int		ft_treat_space(const char *format, int end)
 {
 	const char	*tmp;
 	int			nbr;
+	int 		start;
 
-	while (ft_isdigit(format[i]))
-		i--;
-	tmp = &format[i + 1];
+	start = end;
+	while (ft_isdigit(format[start]))
+		start--;
+	tmp = ft_substr(format, start + 1, end - start + 1);
 	nbr = ft_atoi(tmp);
+	printf("%d", nbr);
 	return (nbr);
 }
 
@@ -57,7 +59,6 @@ int		ft_check_format(const char *format, va_list argp)
 	int	i;
 	int	begin;
 
-	g_w = 0;
 	begin = 0;
 	i = 0;
 	while (format[i] != '\0')
@@ -70,11 +71,9 @@ int		ft_check_format(const char *format, va_list argp)
 		if (format[i] == '%' && begin && i % 2 == 0)
 			ft_putchar_fd('%', 1);
 		while (ft_isdigit(format[i]) && begin)
-		{
 			i++;
-			g_w++;
-			g_wstart = i - g_w;
-		}
+		if (ft_isdigit(format[i - 1]) && begin)
+			ft_treat_space(format, i - 1);
 		if (ft_check_type(format[i]) && begin)
 			ft_apply_type(format, i, argp);
 		else

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/26 22:24:25 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/26 23:21:47 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-int     g_w;
-int     g_wstart;
-
-int		ft_apply_type(const char *format, int i, va_list argp);
+void	ft_apply_type(const char *format, int i, va_list argp);
 int		ft_check_type(const char format);
 int		ft_check_format(const char *format, va_list argp);
 int		ft_printf(const char *format, ...);
