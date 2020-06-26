@@ -6,13 +6,13 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/03/12 04:08:00 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/26 23:14:50 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		apply_type(const char *format, int i, va_list argp)
+int		ft_apply_type(const char *format, int i, va_list argp)
 {
 	if (format[i] == 'c')
 		ft_print_char(va_arg(argp, int), format, i);
@@ -31,7 +31,7 @@ int		apply_type(const char *format, int i, va_list argp)
 	return (0);
 }
 
-int		check_type(char format)
+int		ft_check_type(char format)
 {
 	if (format == 'c' || format == 's' || format == 'p' || format == 'd'
 	|| format == 'i' || format == 'u' || format == 'x' || format == 'X')
@@ -40,7 +40,7 @@ int		check_type(char format)
 		return (0);
 }
 
-int	ft_treat_space(const char *format, int i)
+int		ft_treat_space(const char *format, int i)
 {
 	const char	*tmp;
 	int			nbr;
@@ -52,11 +52,12 @@ int	ft_treat_space(const char *format, int i)
 	return (nbr);
 }
 
-int		check_format(const char *format, va_list argp)
+int		ft_check_format(const char *format, va_list argp)
 {
 	int	i;
-	int begin;
+	int	begin;
 
+	g_w = 0;
 	begin = 0;
 	i = 0;
 	while (format[i] != '\0')
@@ -66,12 +67,16 @@ int		check_format(const char *format, va_list argp)
 			begin = 1;
 			i++;
 		}
-		if (format[i] == '%' && begin)
+		if (format[i] == '%' && begin && i % 2 == 0)
 			ft_putchar_fd('%', 1);
 		while (ft_isdigit(format[i]) && begin)
+		{
 			i++;
-		if (check_type(format[i]) && begin)
-			apply_type(format, i, argp);
+			g_w++;
+			g_wstart = i - g_w;
+		}
+		if (ft_check_type(format[i]) && begin)
+			ft_apply_type(format, i, argp);
 		else
 			ft_putchar_fd(format[i], 1);
 		i++;
@@ -85,7 +90,7 @@ int		ft_printf(const char *format, ...)
 
 	g_nbrchar = 0;
 	va_start(argp, format);
-	check_format(format, argp);
+	ft_check_format(format, argp);
 	va_end(argp);
 	return (g_nbrchar);
 }
