@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/26 23:42:56 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/27 00:19:39 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_check_type(char format)
 		return (0);
 }
 
-int		ft_treat_space(const char *format, int end)
+void		ft_treat_space(const char *format, int end)
 {
 	const char	*tmp;
 	int			nbr;
@@ -50,8 +50,7 @@ int		ft_treat_space(const char *format, int end)
 		start--;
 	tmp = ft_substr(format, start + 1, end - start + 1);
 	nbr = ft_atoi(tmp);
-	printf("%d", nbr);
-	return (nbr);
+	ft_print_spaces(nbr);
 }
 
 int		ft_check_format(const char *format, va_list argp)
