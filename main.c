@@ -1,10 +1,8 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
-  //ft_printf("%ss", "test");
-  printf("%d\n", (printf("%5c", '\0')));
-  printf("%d", ft_printf("%5c", '\0'));
-  //printf("%tests", "papa");
+  (void) argc;
+  ft_printf(argv[1]);
 }
