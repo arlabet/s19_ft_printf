@@ -6,36 +6,11 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/30 22:14:23 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 00:51:12 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_print_char(va_list argp)
-{
-	char c;
-
-	c = va_arg(argp, int);
-	ft_putchar_fd(c, 1);
-}
-
-void	ft_print_string(va_list argp)
-{
-	char *str;
-
-	str = va_arg(argp, char *);
-	ft_putstr_fd(str, 1);
-}
-
-void	ft_print_pointer(va_list argp)
-{
-	size_t p;
-
-	p = va_arg(argp, size_t);
-	ft_putstr_fd("0x", 1);
-	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
-}
 
 int		ft_check_type(char c)
 {
@@ -62,36 +37,41 @@ int		ft_check_type(char c)
 	return (-1);
 }
 
-int		ft_printf(const char *format, ...)
+void	ft_check_format(const char *format, va_list argp)
 {
-	void	(*func_to_call) (va_list);
-	va_list	argp;
-	int		i;
-	int		t;
-
-	t = -1;
-	i = 0;
-	g_nbrchar = 0;
-	va_start(argp, format);
+	int	i;
 	void	(*tab_funct[7]) (va_list);
+	int space_before;
+	int space_after;
+	
 	ft_assign_fct(tab_funct);
+	i = 0;
+	space_before = 0;
+	space_after = 0;
 	while (format[i])
 	{
-		if (i != 0 && format[i - 1] == '%' && format[i] == '%' && i % 2)
+		if (i != 0 && (ft_isdigit(format[i]) || format[i] == '-') && 
+				format[i - 1] == '%' )
+			ft_print_space(&format[i]);
+		if (i != 0 && format[i] == '%' && format[i - 1] == '%' && i % 2)
 			ft_putchar_fd('%', 1);
-		if (i != 0 && format[i - 1] == '%')
-		{
-			if (ft_check_type(format[i]) != -1)
-			{
-				t = ft_check_type(format[i]);
-				func_to_call = tab_funct[t];
-				func_to_call(argp);
-			}
-		}
-		if (format[i] != '%')
+		if (format[i] == '%')
+			i++;
+		if (ft_check_type(format[i]) != -1 && format[i - 1] == '%')
+			tab_funct[ft_check_type(format[i])](argp);
+		else
 			ft_putchar_fd(format[i], 1);
 		i++;
 	}
+}
+
+int		ft_printf(const char *format, ...)
+{
+	va_list	argp;
+
+	g_nbrchar = 0;
+	va_start(argp, format);
+	ft_check_format(format, argp);
 	va_end(argp);
 	return (g_nbrchar);
 }
