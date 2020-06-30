@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/27 00:19:39 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/28 22:37:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,27 @@ void	ft_apply_type(const char *format, int i, va_list argp)
 		ft_print_hexlow(va_arg(argp, unsigned int));
 	if (format[i] == 'X')
 		ft_print_hexup(va_arg(argp, unsigned int));
+	if (format[i] == '-')
+		ft_print_spaces_after(format, i);
+	//if (ft_isdigit(format[i]))
+		// espace avant
 }
 
 int		ft_check_type(char format)
 {
 	if (format == 'c' || format == 's' || format == 'p' || format == 'd'
-	|| format == 'i' || format == 'u' || format == 'x' || format == 'X')
+	|| format == 'i' || format == 'u' || format == 'x' || format == 'X'
+	|| format == '-' || ft_isdigit(format))
 		return (1);
 	else
 		return (0);
 }
 
-void		ft_treat_space(const char *format, int end)
-{
-	const char	*tmp;
-	int			nbr;
-	int			start;
-
-	start = end;
-	while (ft_isdigit(format[start]))
-		start--;
-	tmp = ft_substr(format, start + 1, end - start + 1);
-	nbr = ft_atoi(tmp);
-	ft_print_spaces(nbr);
-}
-
-int		ft_check_format(const char *format, va_list argp)
+void	ft_check_format(const char *format, va_list argp)
 {
 	int	i;
 	int	begin;
+	int stop;
 
 	begin = 0;
 	i = 0;
@@ -69,17 +61,19 @@ int		ft_check_format(const char *format, va_list argp)
 		}
 		if (format[i] == '%' && begin && i % 2 == 0)
 			ft_putchar_fd('%', 1);
-		while (ft_isdigit(format[i]) && begin)
-			i++;
-		if (ft_isdigit(format[i - 1]) && begin)
-			ft_treat_space(format, i - 1);
 		if (ft_check_type(format[i]) && begin)
 			ft_apply_type(format, i, argp);
-		else
+		if (format[i] == '-' && begin == 1)
+		{
+			stop = 1;
+			i++;
+		}
+		while (ft_isdigit(format[i]) && begin)
+			i++;
+		if (stop == 0)
 			ft_putchar_fd(format[i], 1);
 		i++;
 	}
-	return (i);
 }
 
 int		ft_printf(const char *format, ...)
