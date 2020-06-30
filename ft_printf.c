@@ -6,32 +6,35 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/28 22:37:11 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:24:43 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_apply_type(const char *format, int i, va_list argp)
+void	ft_print_char(va_list argp)
 {
-	if (format[i] == 'c')
-		ft_print_char(va_arg(argp, int), format, i);
-	if (format[i] == 's')
-		ft_print_string(va_arg(argp, char *));
-	if (format[i] == 'p')
-		ft_print_pointer(va_arg(argp, size_t));
-	if (format[i] == 'd' || format[i] == 'i')
-		ft_print_num(va_arg(argp, int));
-	if (format[i] == 'u')
-		ft_print_num_uns(va_arg(argp, unsigned int));
-	if (format[i] == 'x')
-		ft_print_hexlow(va_arg(argp, unsigned int));
-	if (format[i] == 'X')
-		ft_print_hexup(va_arg(argp, unsigned int));
-	if (format[i] == '-')
-		ft_print_spaces_after(format, i);
-	//if (ft_isdigit(format[i]))
-		// espace avant
+	char c;
+
+	c = va_arg(argp, int);
+	ft_putchar_fd(c, 1);
+}
+
+void	ft_print_string(va_list argp)
+{
+	char *str;
+
+	str = va_arg(argp, char *);
+	ft_putstr_fd(str, 1);
+}
+
+void	ft_print_pointer(va_list argp)
+{
+	size_t p;
+
+	p = va_arg(argp, size_t);
+	ft_putstr_fd("0x", 1);
+	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
 }
 
 int		ft_check_type(char format)
@@ -44,45 +47,26 @@ int		ft_check_type(char format)
 		return (0);
 }
 
-void	ft_check_format(const char *format, va_list argp)
-{
-	int	i;
-	int	begin;
-	int stop;
-
-	begin = 0;
-	i = 0;
-	while (format[i] != '\0')
-	{
-		if (format[i] == '%')
-		{
-			begin = 1;
-			i++;
-		}
-		if (format[i] == '%' && begin && i % 2 == 0)
-			ft_putchar_fd('%', 1);
-		if (ft_check_type(format[i]) && begin)
-			ft_apply_type(format, i, argp);
-		if (format[i] == '-' && begin == 1)
-		{
-			stop = 1;
-			i++;
-		}
-		while (ft_isdigit(format[i]) && begin)
-			i++;
-		if (stop == 0)
-			ft_putchar_fd(format[i], 1);
-		i++;
-	}
-}
-
 int		ft_printf(const char *format, ...)
 {
 	va_list	argp;
+	struct s_flags print_functions;
+	int i;
 
+	i = 0;
 	g_nbrchar = 0;
+	
 	va_start(argp, format);
-	ft_check_format(format, argp);
+	while (format[i])
+	{
+		if (i != 0 && format[i - 1] == '%')
+		{
+			if (ft_check_type(format[i]))
+				print_functions.s(argp);
+			i++;
+		}
+		i++;
+	}
 	va_end(argp);
 	return (g_nbrchar);
 }

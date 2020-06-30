@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/28 22:26:36 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/30 16:59:20 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,17 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-void	ft_apply_type(const char *format, int i, va_list argp);
-int		ft_check_type(const char format);
-void	ft_check_format(const char *format, va_list argp);
+struct	s_flags
+{
+	void (*s)(va_list);
+	void (*c)(va_list);
+	void (*p)(va_list);
+	void (*d)(va_list);
+	void (*u)(va_list);
+	void (*x)(va_list);
+	void (*X)(va_list);
+};
+
 int		ft_printf(const char *format, ...);
-void	ft_print_char(int car, const char *format, int i);
-void	ft_treat_space(const char *format, int i);
-void	ft_print_string(char *str);
-void	ft_print_pointer(size_t p);
-void	ft_print_num(int nbr);
-void	ft_print_num_uns(unsigned int nbr);
-void	ft_print_hexlow(unsigned int nbr);
-void	ft_print_hexup(unsigned int nbr);
-int     ft_width(char *width);
-void	ft_print_spaces_before(int nbr);
-void	ft_print_spaces_after(const char *format, int i);
 
 #endif
