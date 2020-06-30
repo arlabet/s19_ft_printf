@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/30 17:24:43 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/30 22:14:23 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,59 @@ void	ft_print_pointer(va_list argp)
 	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
 }
 
-int		ft_check_type(char format)
+int		ft_check_type(char c)
 {
-	if (format == 'c' || format == 's' || format == 'p' || format == 'd'
-	|| format == 'i' || format == 'u' || format == 'x' || format == 'X'
-	|| format == '-' || ft_isdigit(format))
-		return (1);
-	else
-		return (0);
+	int		i;
+	char	tab_type[8];
+
+	tab_type[0] = 'c';
+	tab_type[1] = 's';
+	tab_type[2] = 'p';
+	tab_type[3] = 'd';
+	tab_type[4] = 'u';
+	tab_type[5] = 'x';
+	tab_type[6] = 'X';
+	tab_type[7] = '\0';
+	i = 0;
+	while (tab_type[i])
+	{
+		if (tab_type[i] == c)
+		{
+			return (i);
+		}
+		i++;
+	}
+	return (-1);
 }
 
 int		ft_printf(const char *format, ...)
 {
+	void	(*func_to_call) (va_list);
 	va_list	argp;
-	struct s_flags print_functions;
-	int i;
+	int		i;
+	int		t;
 
+	t = -1;
 	i = 0;
 	g_nbrchar = 0;
-	
 	va_start(argp, format);
+	void	(*tab_funct[7]) (va_list);
+	ft_assign_fct(tab_funct);
 	while (format[i])
 	{
+		if (i != 0 && format[i - 1] == '%' && format[i] == '%' && i % 2)
+			ft_putchar_fd('%', 1);
 		if (i != 0 && format[i - 1] == '%')
 		{
-			if (ft_check_type(format[i]))
-				print_functions.s(argp);
-			i++;
+			if (ft_check_type(format[i]) != -1)
+			{
+				t = ft_check_type(format[i]);
+				func_to_call = tab_funct[t];
+				func_to_call(argp);
+			}
 		}
+		if (format[i] != '%')
+			ft_putchar_fd(format[i], 1);
 		i++;
 	}
 	va_end(argp);

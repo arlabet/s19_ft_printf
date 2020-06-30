@@ -6,30 +6,26 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/30 16:59:20 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/06/30 21:52:54 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
-# include <stdlib.h>
 # include "libft/libft.h"
 
-struct	s_flags
-{
-	void (*s)(va_list);
-	void (*c)(va_list);
-	void (*p)(va_list);
-	void (*d)(va_list);
-	void (*u)(va_list);
-	void (*x)(va_list);
-	void (*X)(va_list);
-};
-
+void	ft_print_num(va_list argp);
 int		ft_printf(const char *format, ...);
+void	ft_print_num_uns(va_list argp);
+void	ft_print_hexlow(va_list argp);
+void	ft_print_hexup(va_list argp);
+void	ft_print_char(va_list argp);
+void	ft_print_string(va_list argp);
+void	ft_print_pointer(va_list argp);
+int		ft_check_type(char c); 
+void	*ft_assign_fct(void (*tab_funct[7]) (va_list));
 
 #endif
