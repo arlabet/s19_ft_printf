@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_space.c                                   :+:      :+:    :+:   */
+/*   ft_all_prints_csp.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/01 00:31:43 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 01:02:47 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/01 01:39:07 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_space(const char *format)
+void	ft_print_char(int car, const char *format, int i)
 {
-	int end;
-	char *tmp;
-	int nbr_space;
-	
-	end = 0;
-	if (format[end] == '-')
-	{
+	ft_putchar_fd(car, 1);
+}
+
+void	ft_print_string(char *str)
+{
+	ft_putstr_fd(str, 1);
+}
+
+void	ft_print_pointer(size_t p)
+{
+	ft_putstr_fd("0x", 1);
+	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
+}
+
+void	ft_print_spaces(int nbr, int before_after)
+{
+	char c;
+
+	c = 32;
+	if (before_after == 1)
 		ft_putchar_fd('%', 1);
-		end++;
+	while (nbr > 1)
+	{
+		ft_putchar_fd(c, 1);
+		nbr --;
 	}
-	while (ft_isdigit(format[end]))
-		end++;
-	tmp = ft_substr(format, 0, end);
-	nbr_space = ft_atoi(tmp);
-	while (nbr_space > 0)
-		ft_putchar_fd(' ', 1);
-	if (ft_isdigit(format[0]))
+	if (before_after == 0)
 		ft_putchar_fd('%', 1);
 }

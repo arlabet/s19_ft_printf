@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_csp.c                                    :+:      :+:    :+:   */
+/*   ft_all_prints_dux.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 22:25:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 00:31:04 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/03/10 14:48:45 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_char(va_list argp)
+void	ft_print_num(int nbr)
 {
-	char c;
-
-	c = va_arg(argp, int);
-	ft_putchar_fd(c, 1);
+	ft_putnbr_fd(nbr, 1);
 }
 
-void	ft_print_string(va_list argp)
+void	ft_print_num_uns(unsigned int nbr)
 {
-	char *str;
-
-	str = va_arg(argp, char *);
-	ft_putstr_fd(str, 1);
+	ft_putnbr_u_fd(nbr, 1);
 }
 
-void	ft_print_pointer(va_list argp)
+void	ft_print_hexlow(unsigned int nbr)
 {
-	size_t p;
+	ft_putnbr_base_fd(nbr, "0123456789abcdef", 1);
+}
 
-	p = va_arg(argp, size_t);
-	ft_putstr_fd("0x", 1);
-	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
+void	ft_print_hexup(unsigned int nbr)
+{
+	ft_putnbr_base_fd(nbr, "0123456789ABCDEF", 1);
 }
