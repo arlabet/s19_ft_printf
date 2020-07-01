@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 15:39:04 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/03/12 03:32:00 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 20:41:21 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	if (fd >= 0 && fd < OPEN_MAX)
+	if (fd >= 0 && fd < OPEN_MAX && c) 
 	{
 		write(fd, &c, 1);
 		g_nbrchar++;
