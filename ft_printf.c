@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 02:08:12 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:38:33 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	ft_apply_type(const char *format, int i, va_list argp)
 	if (format[i] == 'c')
 		ft_print_char(va_arg(argp, int), format, i);
 	if (format[i] == 's')
-		ft_print_string(va_arg(argp, char *));
+		ft_print_string(va_arg(argp, char *), format, i);
 	if (format[i] == 'p')
-		ft_print_pointer(va_arg(argp, size_t));
+		ft_print_pointer(va_arg(argp, size_t), format, i);
 	if (format[i] == 'd' || format[i] == 'i')
-		ft_print_num(va_arg(argp, int));
+		ft_print_num(va_arg(argp, int), format, i);
 	if (format[i] == 'u')
-		ft_print_num_uns(va_arg(argp, unsigned int));
+		ft_print_num_uns(va_arg(argp, unsigned int), format, i);
 	if (format[i] == 'x')
-		ft_print_hexlow(va_arg(argp, unsigned int));
+		ft_print_hexlow(va_arg(argp, unsigned int), format, i);
 	if (format[i] == 'X')
-		ft_print_hexup(va_arg(argp, unsigned int));
+		ft_print_hexup(va_arg(argp, unsigned int), format, i);
 }
 
 int		ft_check_type(char format)
@@ -39,33 +39,13 @@ int		ft_check_type(char format)
 		return (0);
 }
 
-void		ft_treat_space(const char *format, int end)
-{
-	const char	*tmp;
-	int			nbr;
-	int			start;
-	int			before_after_zero;
-
-	before_after_zero = 0;
-	start = end;
-	while (ft_isdigit(format[start]))
-		start--;
-	tmp = ft_substr(format, start + 1, end - start + 1);
-	nbr = ft_atoi(tmp);
-	if (format[start] == '-')
-		before_after_zero = 1;
-	if (format[start + 1] == 48 && format[start] != '-')
-		before_after_zero = 2;
-	ft_print_spaces(nbr, before_after_zero);
-}
-
 int		ft_check_format(const char *format, va_list argp)
 {
 	int	i;
 	int	begin;
 
 	i = 0;
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		begin = 0;
 		if (format[i] == '%')
@@ -77,8 +57,8 @@ int		ft_check_format(const char *format, va_list argp)
 			ft_putchar_fd('%', 1);
 		while ((ft_isdigit(format[i]) || format[i] == '-') && begin)
 			i++;
-		if (ft_isdigit(format[i - 1]) && begin)
-			ft_treat_space(format, i - 1);
+		if (ft_isdigit(format[i - 1]) && begin && ft_check_type(format[i]) == 0)
+			ft_treat_space(format, i - 1, 0);
 		if (ft_check_type(format[i]) && begin)
 			ft_apply_type(format, i, argp);
 		else if (format[i] != '%')

@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 18:57:13 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/07/01 18:49:48 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/01 18:50:46 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
-
-int main(void)
-{ 
-  ft_printf("%-32c %c",'t','t');
-  printf("%c", '\n');
-  printf("%-32c %c", 't', 't');
+int ft_abs (int nbr)
+{
+	if (nbr < 0)
+		return (-1 * nbr);
+	else
+		return nbr;
 }

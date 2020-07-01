@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 01:52:11 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:53:42 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int		ft_check_type(const char format);
 int		ft_check_format(const char *format, va_list argp);
 int		ft_printf(const char *format, ...);
 void	ft_print_char(int car, const char *format, int i);
-void	ft_treat_space(const char *format, int i);
-void	ft_print_string(char *str);
-void	ft_print_pointer(size_t p);
-void	ft_print_num(int nbr);
-void	ft_print_num_uns(unsigned int nbr);
-void	ft_print_hexlow(unsigned int nbr);
-void	ft_print_hexup(unsigned int nbr);
+int		ft_treat_space(const char *format, int end, int fo);
+void	ft_print_string(char *str, const char *format, int i);
+void	ft_print_pointer(size_t p, const char *format, int i);
+void	ft_print_num(int nbr, const char *format, int i);
+void	ft_print_num_uns(unsigned int nbr, const char *format, int i);
+void	ft_print_hexlow(unsigned int nbr, const char *format, int i);
+void	ft_print_hexup(unsigned int nbr, const char *format, int i);
 int     ft_width(char *width);
 void	ft_print_spaces(int nbr, int before_after_zero);
+void	ft_print_spaces_format(int nbr);
 
 #endif

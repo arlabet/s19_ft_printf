@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:16:46 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/06/27 00:17:03 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:55:04 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	ft_putnbr_u_fd(unsigned int n, int fd);
 void	ft_putnbr_base_fd(size_t nb, char *base, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int 	ft_abs (int nbr);
 
 #endif
