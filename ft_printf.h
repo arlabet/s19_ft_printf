@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 18:53:42 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 19:55:06 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void	ft_apply_type(const char *format, int i, va_list argp);
 int		ft_check_type(const char format);
-int		ft_check_format(const char *format, va_list argp);
+void	ft_check_format(const char *format, va_list argp);
 int		ft_printf(const char *format, ...);
 void	ft_print_char(int car, const char *format, int i);
 int		ft_treat_space(const char *format, int end, int fo);

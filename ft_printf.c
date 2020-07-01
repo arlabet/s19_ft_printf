@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 18:38:33 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 20:25:50 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_check_type(char format)
 		return (0);
 }
 
-int		ft_check_format(const char *format, va_list argp)
+void	ft_check_format(const char *format, va_list argp)
 {
 	int	i;
 	int	begin;
@@ -48,7 +48,7 @@ int		ft_check_format(const char *format, va_list argp)
 	while (format[i])
 	{
 		begin = 0;
-		if (format[i] == '%')
+		if (format[i] == '%' && ft_strlen(format) > 1)
 		{
 			begin = 1;
 			i++;
@@ -57,15 +57,15 @@ int		ft_check_format(const char *format, va_list argp)
 			ft_putchar_fd('%', 1);
 		while ((ft_isdigit(format[i]) || format[i] == '-') && begin)
 			i++;
-		if (ft_isdigit(format[i - 1]) && begin && ft_check_type(format[i]) == 0)
+		if (ft_isdigit(format[i - 1]) && begin && format[i] == '%')
 			ft_treat_space(format, i - 1, 0);
 		if (ft_check_type(format[i]) && begin)
 			ft_apply_type(format, i, argp);
 		else if (format[i] != '%')
 			ft_putchar_fd(format[i], 1);
-		i++;
+		if (format[i])
+			i++;
 	}
-	return (i);
 }
 
 int		ft_printf(const char *format, ...)
