@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 21:15:55 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/02 00:46:46 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+int		g_crop;
 void	ft_apply_type(const char *format, int i, va_list argp);
 int		ft_check_type(const char format);
 void	ft_check_format(const char *format, va_list argp);
@@ -35,5 +36,6 @@ int     ft_width(char *width);
 void	ft_print_spaces(int nbr, int before_after_zero);
 void	ft_print_spaces_format(int nbr);
 int		ft_is_flag(char c);
+int		ft_to_skip(const char *format, int i);
 
 #endif
