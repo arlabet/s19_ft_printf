@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 01:36:40 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 02:08:12 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,19 @@ void		ft_treat_space(const char *format, int end)
 	const char	*tmp;
 	int			nbr;
 	int			start;
-	int			before_after;
+	int			before_after_zero;
 
-	before_after = 0;
+	before_after_zero = 0;
 	start = end;
 	while (ft_isdigit(format[start]))
 		start--;
 	tmp = ft_substr(format, start + 1, end - start + 1);
 	nbr = ft_atoi(tmp);
 	if (format[start] == '-')
-		before_after = 1;
-	ft_print_spaces(nbr, before_after);
+		before_after_zero = 1;
+	if (format[start + 1] == 48 && format[start] != '-')
+		before_after_zero = 2;
+	ft_print_spaces(nbr, before_after_zero);
 }
 
 int		ft_check_format(const char *format, va_list argp)
@@ -71,7 +73,7 @@ int		ft_check_format(const char *format, va_list argp)
 			begin = 1;
 			i++;
 		}
-		if (format[i] == '%' && begin && i % 2 == 0)
+		if (format[i] == '%' && begin && i % 2)
 			ft_putchar_fd('%', 1);
 		while ((ft_isdigit(format[i]) || format[i] == '-') && begin)
 			i++;

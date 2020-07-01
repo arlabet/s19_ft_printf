@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 01:36:56 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 01:52:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	ft_print_num_uns(unsigned int nbr);
 void	ft_print_hexlow(unsigned int nbr);
 void	ft_print_hexup(unsigned int nbr);
 int     ft_width(char *width);
-void	ft_print_spaces(int nbr, int before_after);
+void	ft_print_spaces(int nbr, int before_after_zero);
 
 #endif

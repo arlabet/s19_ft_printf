@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/01 01:39:07 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/01 02:05:17 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,21 @@ void	ft_print_pointer(size_t p)
 	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
 }
 
-void	ft_print_spaces(int nbr, int before_after)
+void	ft_print_spaces(int nbr, int before_after_zero)
 {
 	char c;
 
-	c = 32;
-	if (before_after == 1)
+	if (before_after_zero == 1 || before_after_zero == 0)
+		c = 32;
+	if (before_after_zero == 2)
+		c = 48;
+	if (before_after_zero == 1)
 		ft_putchar_fd('%', 1);
 	while (nbr > 1)
 	{
 		ft_putchar_fd(c, 1);
 		nbr --;
 	}
-	if (before_after == 0)
+	if (before_after_zero == 0 || before_after_zero == 2)
 		ft_putchar_fd('%', 1);
 }
