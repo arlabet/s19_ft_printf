@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 02:54:10 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/02 03:54:38 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	ft_print_spaces_format(int nbr);
 int		ft_is_flag(char c);
 int		ft_to_skip(const char *format, int i);
 int		crop_space (const char *format, int i);
+void	print_crop_space(char *str, int tmp, int i, const char *format);
 
 #endif
