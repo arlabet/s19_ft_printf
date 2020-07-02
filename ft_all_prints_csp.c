@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 16:16:16 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:19:10 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_print_char(int car, const char *format, int i)
 	tmp = ft_abs(nbr);
 	if (tmp == nbr && ft_isdigit(format[i - 1]))
 		ft_print_spaces_format(tmp);
+	ft_putchar_fd(car, 1);
 	if (tmp != nbr && ft_isdigit(format[i - 1]))
 		ft_print_spaces_format(tmp);
 }
