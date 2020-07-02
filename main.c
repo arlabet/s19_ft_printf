@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 00:33:44 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/02 02:05:31 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int main(void)
 { 
-  ft_printf("%.s", "hello");
+  ft_printf("%4.2s", "yolo");
   printf("%c", '\n');
-  printf("%.s", "hello");
+  printf("%4.2s", "yolo");
   //printf("ceci est un %");
 }
