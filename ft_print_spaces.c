@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:43 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 03:09:41 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/04 01:56:34 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@ int		ft_treat_space(const char *format, int end, int fo)
 	nbr = ft_atoi(tmp);
 	if (format[start] == '-')
 		before_after_zero = 1;
-	if (format[start] == '.')
+	if (format[start] == '.' && format[start + 1] != '0')
 		g_crop = 1;
+	if (format[start] == '.' && format[start + 1] == '0')
+		g_crop = 2;
 	if (format[start + 1] == 48 && format[start] != '-')
 		before_after_zero = 2;
 	if (fo == 0 && g_crop == 0)
 		ft_print_spaces(nbr, before_after_zero);
 	if (before_after_zero == 1)
 		return (-1 * nbr);
-	if (before_after_zero == 0)
+	if (before_after_zero == 0 || g_crop == 2)
 		return (nbr);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 16:19:10 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/04 01:49:49 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_print_char(int car, const char *format, int i)
 {
 	int nbr;
 	int tmp;
-	int	crop;
 	
 	if (ft_isdigit(format[i - 1]))
 		nbr = ft_treat_space(format, i - 1, 1);
@@ -49,6 +48,8 @@ void	ft_print_string(char *str, const char *format, int i)
 		ft_putstr_fd(str, 1);
 	if (g_crop == 1)
 		print_crop_space(str, tmp, i, format);
+	if (g_crop == 2)
+		ft_only_crop(str, tmp);
 	if (tmp > len && tmp != nbr_space && ft_isdigit(format[i - 1]) 
 		&& g_crop == 0)
 		ft_print_spaces_format(tmp - len + 1);
@@ -78,6 +79,7 @@ int		crop_space(const char *format, int i)
 		i--;
 	if (format[i] == '.' && ft_isdigit(format[i - 1]))
 		nbr_space = ft_treat_space(format, i - 1, 1);
+	
 	return (nbr_space);
 }
 
