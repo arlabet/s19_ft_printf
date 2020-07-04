@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/04 01:44:39 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/04 02:39:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ void	ft_print_num_uns(unsigned int nbr, const char *format, int i);
 void	ft_print_hexlow(unsigned int nbr, const char *format, int i);
 void	ft_print_hexup(unsigned int nbr, const char *format, int i);
 int     ft_width(char *width);
-void	ft_print_spaces(int nbr, int before_after_zero);
+void	ft_print_spaces(int nbr, int before_after_zero, int procent);
 void	ft_print_spaces_format(int nbr);
 int		ft_is_flag(char c);
-int		ft_to_skip(const char *format, int i);
 int		crop_space (const char *format, int i);
 void	print_crop_space(char *str, int tmp, int i, const char *format);
 void	ft_only_crop(char *str, int tmp);

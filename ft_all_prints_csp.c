@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/04 01:49:49 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/04 02:40:49 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,20 @@ void	ft_print_string(char *str, const char *format, int i)
 	int len;
 	int nbr_space;
 	int	tmp;
-	int new_start;
 
 	g_crop = 0;
 	if (str == NULL)
 		str = "(null)";
 	len = ft_strlen(str);
+	if (format[i - 1] == '.')
+		ft_print_spaces(ft_treat_space(format, i - 2, 1), 1, 0);
 	if (ft_isdigit(format[i - 1]))
 		nbr_space = ft_treat_space(format, i - 1, 1);
 	tmp = ft_abs(nbr_space);
 	if (tmp > len && tmp == nbr_space && ft_isdigit(format[i - 1]) 
 		&& g_crop == 0)
 		ft_print_spaces_format(tmp - len + 1);
-	if (g_crop == 0)
+	if (g_crop == 0 && format[i - 1] != '.')
 		ft_putstr_fd(str, 1);
 	if (g_crop == 1)
 		print_crop_space(str, tmp, i, format);

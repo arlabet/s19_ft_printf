@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 02:32:31 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/04 02:26:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_check_format(const char *format, va_list argp)
 		}
 		if (format[i] == '%' && begin && i % 2)
 			ft_putchar_fd('%', 1);
-		while (ft_to_skip(format, i) && begin)
+		while (ft_is_flag(format[i]) && begin)
 			i++;
 		if (ft_isdigit(format[i - 1]) && begin && format[i] == '%')
 			ft_treat_space(format, i - 1, 0);
