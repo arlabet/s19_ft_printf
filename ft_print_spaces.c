@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 18:21:43 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/04 02:45:27 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/10 16:20:32 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_treat_space(const char *format, int end, int fo)
 		before_after_zero = 1;
 	if (format[start] == '.' && format[start + 1] != '0')
 		g_crop = 1;
+	if (format[start] == '%' && format[start + 1] == '0' && fo == 1)
+		return (nbr);
 	if (format[start] == '.' && format[start + 1] == '0')
 		g_crop = 2;
 	if (format[start + 1] == 48 && format[start] != '-')
@@ -74,4 +76,13 @@ void	ft_print_spaces_format(int nbr)
 		ft_putchar_fd(' ', 1);
 		nbr --;
 	}
+}
+
+int		ft_print_zero(const char *format, int i)
+{
+	while(ft_isdigit(format[i]))
+		i--;
+	if (format[i] == '%' && format[i + 1] == '0')
+		return(1);
+	return(0);
 }
