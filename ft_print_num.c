@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/13 11:55:17 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/07/13 10:59:27 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/13 12:02:43 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int main(void)
-{ 
-  ft_printf("%7i", -33);
-  printf("%c", '\n');
-  printf("%7i", -33);
-  //printf("ceci est un %");
+int	ft_len_nbr(int nbr)
+{
+	int i;
+
+	i = 0;
+	if (nbr < 0)
+		i = 1;
+	nbr = ft_abs(nbr);
+	while (nbr >= 10)
+	{
+		nbr = nbr / 10;
+		i++;
+	}
+	return(i + 1);
 }
