@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:59:27 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/13 12:02:43 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/13 13:38:29 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,18 @@ int	ft_len_nbr(int nbr)
 		i++;
 	}
 	return(i + 1);
+}
+
+int ft_space_num(const char *format, int end)
+{
+	int start;
+	char *tmp;
+	
+	start = end;
+	while (ft_isdigit(format[start]))
+		start--;
+	tmp = ft_substr(format, start + 1, end - start + 1);
+	if (format[start] == '-')
+		return (atoi(tmp) * -1);
+	return(atoi(tmp));
 }

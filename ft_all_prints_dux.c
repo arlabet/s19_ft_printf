@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/13 12:02:52 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/13 13:38:57 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ void	ft_print_num(int nbr, const char *format, int i)
 
 	len = ft_len_nbr(nbr);
 	if (ft_isdigit(format[i - 1]))
-		nbr_space = ft_treat_space(format, i - 1, 1);
+		nbr_space = ft_space_num(format, i - 1);
 	tmp = ft_abs(nbr_space);
-	if (tmp > len && tmp == nbr_space && ft_isdigit(format[i - 1])
-		&& g_crop == 0 && ft_print_zero(format, i - 1) == 0)
+	if (tmp > len && tmp == nbr_space && ft_isdigit(format[i - 1]))
 		ft_print_spaces_format(tmp - len + 1);
 	ft_putnbr_fd(nbr, 1);
-	if (tmp > len && tmp != nbr_space && ft_isdigit(format[i - 1])
-		&& g_crop == 0)
+	if (tmp > len && tmp != nbr_space && ft_isdigit(format[i - 1]))
 		ft_print_spaces_format(tmp - len + 1);
 }
 
