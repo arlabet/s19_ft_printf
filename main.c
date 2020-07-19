@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/13 13:29:54 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/19 15:03:33 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int main(void)
 { 
 
-  ft_printf("%-7i", 33);
-  printf("%c", '\n');
-  printf("%-7i", 33);
+	ft_printf("%d %s %c", 12, "test", 't');
+	printf("%d %s %c", 12, "test", 't');
 }

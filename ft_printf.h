@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/13 13:27:18 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/19 15:02:45 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,11 @@ int		ft_check_type(const char format);
 void	ft_check_format(const char *format, va_list argp);
 int		ft_printf(const char *format, ...);
 void	ft_print_char(int car, const char *format, int i);
-int		ft_treat_space(const char *format, int end, int fo);
 void	ft_print_string(char *str, const char *format, int i);
 void	ft_print_pointer(size_t p, const char *format, int i);
 void	ft_print_num(int nbr, const char *format, int i);
 void	ft_print_num_uns(unsigned int nbr, const char *format, int i);
 void	ft_print_hexlow(unsigned int nbr, const char *format, int i);
 void	ft_print_hexup(unsigned int nbr, const char *format, int i);
-int     ft_width(char *width);
-void	ft_print_spaces(int nbr, int before_after_zero, int procent);
-void	ft_print_spaces_format(int nbr);
-int		ft_is_flag(char c);
-int		crop_space (const char *format, int i);
-void	print_crop_space(char *str, int tmp, int i, const char *format);
-void	ft_only_crop(char *str, int tmp);
-int		ft_print_zero(const char *format, int i);
-int		ft_len_nbr(int nbr);
-int		ft_space_num(const char *format, int end);
 
 #endif
