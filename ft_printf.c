@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 17:16:08 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:22:20 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_check_flag(char c)
 {
 	int i;
-	static char	tab_flag[9] = {'c', 's', 'p', 'd', 'u', 'x', 'X', '%', 0};
+	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
 
 	i = 0;
 	while (tab_flag[i])
@@ -52,12 +52,12 @@ void	ft_check_format(const char *format, va_list argp)
 			ft_putchar_fd('%', 1);
 		while (ft_is_flag(format[i]) && begin)
 			i++;
-		if (ft_isdigit(format[i - 1]) && begin && format[i] == '%')
+		if (i != 0 && ft_isdigit(format[i - 1]) && begin && format[i] == '%')
 			ft_print_space(format, i - 1);
+		if(ft_check_flag(format[i]) != -1 && begin)
+			g_tab_func[ft_check_flag(format[i])](argp);
 		else if (format[i] != '%')
-		{
 			ft_putchar_fd(format[i], 1);
-		}
 		if (format[i])
 			i++;
 	}
