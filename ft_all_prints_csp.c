@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 12:03:13 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:47:31 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ void	ft_print_pointer(va_list argp)
 	p = va_arg(argp, size_t);
 	ft_putstr_fd("0x", 1);
 	ft_putnbr_base_fd(p, "0123456789abcdef", 1);
+}
+
+void	ft_print_space(const char *format, int i)
+{
+	int end;
+	int start;
+	char *tmp;
+	int nbr_space;
+
+	nbr_space = atoi(&format[i]);
+	//printf("%d", nbr_space);
+	while (nbr_space--)
+		ft_putchar_fd(' ', 1);
 }

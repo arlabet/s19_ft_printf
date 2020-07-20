@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 15:45:12 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:17:09 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	ft_print_num(va_list argp);
 void	ft_print_num_uns(va_list argp);
 void	ft_print_hexlow(va_list argp);
 void	ft_print_hexup(va_list argp);
+void	ft_print_space(const char *format, int i);
 
-static void (*tab_func[7]) (va_list) = {&ft_print_char, &ft_print_string,
+static void (*g_tab_func[7]) (va_list) = {&ft_print_char, &ft_print_string,
 	&ft_print_pointer, &ft_print_num, &ft_print_num_uns, &ft_print_hexlow, 
 	&ft_print_hexup};
 
