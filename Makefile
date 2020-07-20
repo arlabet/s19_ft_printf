@@ -6,12 +6,13 @@
 #    By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 16:01:36 by nsahloum          #+#    #+#              #
-#    Updated: 2020/07/20 23:54:03 by nsahloum         ###   ########.fr        #
+#    Updated: 2020/07/21 00:49:34 by nsahloum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libftprintf.a
 SRCS		=	ft_all_prints_csp.c ft_all_prints_dux.c ft_printf.c \
+				ft_print_reset.c \
 
 OBJS		= $(SRCS:.c=.o)
 LIBFT		= ./libft

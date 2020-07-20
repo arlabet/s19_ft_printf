@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 12:05:18 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 00:32:59 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,16 @@ void	ft_print_hexup(va_list argp)
 
 	nbr = va_arg(argp, unsigned int);
 	ft_putnbr_base_fd(nbr, "0123456789ABCDEF", 1);
+}
+
+void	ft_crop(char *str, int end)
+{
+	int i;
+
+	i = 0;
+	while (i < end)
+	{
+		ft_putchar_fd(str[i], 1);
+		i++;
+	}
 }

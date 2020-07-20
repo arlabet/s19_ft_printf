@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 23:46:46 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 01:40:29 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,29 @@ void	ft_print_char(va_list argp)
 void	ft_print_string(va_list argp)
 {
 	char *str;
-
+	int nbr;
+	
+	if (g_noprint == -1)
+		return;
 	str = va_arg(argp, char *);
-	ft_putstr_fd(str, 1);
+	if(g_width > 0 && g_width > ft_strlen(str))
+	{
+		nbr = g_width - ft_strlen(str);
+		ft_print_space_format(nbr);
+	}
+	if (g_prec == 0 || g_prec > ft_strlen(str))
+		ft_putstr_fd(str, 1);
+	if (g_prec < ft_strlen(str))
+		ft_crop(str, g_prec);
+	if (g_width < 0 && ft_abs(g_width) > ft_strlen(str))
+	{
+		nbr = ft_abs(g_width) - ft_strlen(str);
+		ft_print_space_format(nbr);
+	}
+	g_width = 0;
+	g_prec = 0;
+	g_p = NULL;
+	g_w = NULL;
 }
 
 void	ft_print_pointer(va_list argp)
@@ -63,7 +83,18 @@ void	ft_print_space(const char *format, int i)
 
 void	ft_stock(const char *format, int i)
 {
-	while (ft_isdigit(format[i]))
+	if (format[i] == '.' || format[i] == '0')
+		g_noprint = -1;
+	while (ft_isdigit(format[i]) || format[i] == '-')
 		i--;
-	g_width = ft_atoi(&format[i + 1]);
+	if (format[i] != '.')
+	{
+		g_w = &format[i + 1];
+		g_width = ft_atoi(&format[i + 1]);
+	}
+	else if (format[i] == '.')
+	{
+		g_p = &format[i + 1];
+		g_prec = ft_atoi(&format[i + 1]);
+	}
 }

@@ -6,11 +6,20 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 21:56:09 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 01:34:52 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_print_space_format(int nbr)
+{
+	char c;
+
+	c = ' ';
+	while(nbr--)
+		ft_putchar_fd(c, 1);
+}
 
 int		ft_check_flag(char c)
 {
@@ -27,9 +36,9 @@ int		ft_check_flag(char c)
 	return (-1);
 }
 
-int		ft_is_flag(char c)
+int		ft_is_flag(const char *format, int i)
 {
-	if (ft_isdigit(c) || c == '-' || c == '.')
+	if (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '.')
 		return (1);
 	return (0);
 }
@@ -48,11 +57,12 @@ void	ft_check_format(const char *format, va_list argp)
 			begin = 1;
 			i++;
 		}
-		while (ft_is_flag(format[i]) && begin)
+		while (ft_is_flag(format, i) && begin)
 			i++;
 		if (i != 0 && ft_isdigit(format[i - 1]) && begin && format[i] == '%')
 			ft_print_space(format, i - 1);
-		if (ft_check_flag(format[i]) != -1 && begin && ft_isdigit(format[i - 1]))
+		if (ft_check_flag(format[i]) != -1 && begin && (ft_isdigit(format[i - 1]) 
+		|| format[i - 1] == '.'))
 			ft_stock(format, i - 1);
 		if(ft_check_flag(format[i]) != -1 && begin)
 			g_tab_func[ft_check_flag(format[i])](argp);
