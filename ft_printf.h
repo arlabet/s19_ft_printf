@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 01:39:02 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 01:42:58 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_print_space(const char *format, int i);
 void		ft_stock(const char *format, int i);
 void	ft_print_space_format(int nbr);
 void	ft_crop(char *str, int end);
-void	ft_reset(int g_width, const char	*g_w, int g_prec, const char *g_p);
+void	ft_reset(void);
 
 static void (*g_tab_func[7]) (va_list) = {&ft_print_char, &ft_print_string,
 	&ft_print_pointer, &ft_print_num, &ft_print_num_uns, &ft_print_hexlow, 

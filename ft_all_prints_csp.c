@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 01:40:29 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 01:47:00 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,25 @@ void	ft_print_string(va_list argp)
 	char *str;
 	int nbr;
 	
-	if (g_noprint == -1)
-		return;
-	str = va_arg(argp, char *);
-	if(g_width > 0 && g_width > ft_strlen(str))
+	if (g_noprint != -1)
 	{
-		nbr = g_width - ft_strlen(str);
-		ft_print_space_format(nbr);
+		str = va_arg(argp, char *);
+		if(g_width > 0 && g_width > ft_strlen(str))
+		{
+			nbr = g_width - ft_strlen(str);
+			ft_print_space_format(nbr);
+		}
+		if (g_prec == 0 || g_prec > ft_strlen(str))
+			ft_putstr_fd(str, 1);
+		if (g_prec < ft_strlen(str))
+			ft_crop(str, g_prec);
+		if (g_width < 0 && ft_abs(g_width) > ft_strlen(str))
+		{
+			nbr = ft_abs(g_width) - ft_strlen(str);
+			ft_print_space_format(nbr);
+		}
 	}
-	if (g_prec == 0 || g_prec > ft_strlen(str))
-		ft_putstr_fd(str, 1);
-	if (g_prec < ft_strlen(str))
-		ft_crop(str, g_prec);
-	if (g_width < 0 && ft_abs(g_width) > ft_strlen(str))
-	{
-		nbr = ft_abs(g_width) - ft_strlen(str);
-		ft_print_space_format(nbr);
-	}
-	g_width = 0;
-	g_prec = 0;
-	g_p = NULL;
-	g_w = NULL;
+	ft_reset();
 }
 
 void	ft_print_pointer(va_list argp)
