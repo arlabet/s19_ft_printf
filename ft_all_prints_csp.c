@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 21:37:38 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 21:56:37 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ void	ft_print_space(const char *format, int i)
 		ft_putchar_fd(c, 1);
 	if (abs == nbr_space)
 		ft_putchar_fd('%', 1);
+}
+
+void	ft_stock(char *format, int i)
+{
+	
 }
