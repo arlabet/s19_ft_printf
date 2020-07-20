@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 16:47:31 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:18:01 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ void	ft_print_pointer(va_list argp)
 
 void	ft_print_space(const char *format, int i)
 {
-	int end;
-	int start;
-	char *tmp;
 	int nbr_space;
 
-	nbr_space = atoi(&format[i]);
-	//printf("%d", nbr_space);
-	while (nbr_space--)
+	while(ft_isdigit(format[i]))
+		i--;
+	nbr_space = atoi(&format[i + 1]);
+	while(nbr_space--)
 		ft_putchar_fd(' ', 1);
 }
