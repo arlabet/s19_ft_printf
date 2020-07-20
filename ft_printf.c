@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 13:22:38 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:45:07 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ void	ft_check_format(const char *format, va_list argp)
 	int			i;
 	int			begin;
 	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
-	static void (*tab_func[7]) (va_list) = {&ft_print_char, &ft_print_string,
-	&ft_print_pointer, &ft_print_num, &ft_print_num_uns, &ft_print_hexlow, 
-	&ft_print_hexup};
 	
 	i = 0;
 	while (format[i])
@@ -48,7 +45,6 @@ void	ft_check_format(const char *format, va_list argp)
 			ft_putchar_fd('%', 1);
 		if (ft_check_flag(tab_flag, format[i]) != -1 && begin)
 			tab_func[ft_check_flag(tab_flag, format[i])](argp);
-
 		else if (format[i] != '%')
 			ft_putchar_fd(format[i], 1);
 		if (format[i])
