@@ -6,15 +6,16 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/20 15:45:07 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:47:40 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_check_flag(char *tab_flag, char c)
+int		ft_check_flag(char c)
 {
 	int i;
+	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
 
 	i = 0;
 	while (tab_flag[i])
@@ -30,7 +31,6 @@ void	ft_check_format(const char *format, va_list argp)
 {
 	int			i;
 	int			begin;
-	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
 	
 	i = 0;
 	while (format[i])
@@ -43,8 +43,8 @@ void	ft_check_format(const char *format, va_list argp)
 		}
 		if (format[i] == '%' && format[i - 1] == '%' && i != 0)
 			ft_putchar_fd('%', 1);
-		if (ft_check_flag(tab_flag, format[i]) != -1 && begin)
-			tab_func[ft_check_flag(tab_flag, format[i])](argp);
+		if (ft_check_flag(format[i]) != -1 && begin)
+			tab_func[ft_check_flag(format[i])](argp);
 		else if (format[i] != '%')
 			ft_putchar_fd(format[i], 1);
 		if (format[i])
