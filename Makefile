@@ -6,7 +6,7 @@
 #    By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 16:01:36 by nsahloum          #+#    #+#              #
-#    Updated: 2020/07/20 12:49:51 by nsahloum         ###   ########.fr        #
+#    Updated: 2020/07/20 23:54:03 by nsahloum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ SRCS		=	ft_all_prints_csp.c ft_all_prints_dux.c ft_printf.c \
 
 OBJS		= $(SRCS:.c=.o)
 LIBFT		= ./libft
-HEADER		= ./
-%.o: %.c
-	gcc -c -I$(HEADER) -o $@ $<
+CC		= gcc
+.c.o:
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 all: makelib $(NAME)
 $(NAME): $(OBJS)
 	cp $(LIBFT)/libft.a $(NAME)
