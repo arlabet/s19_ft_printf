@@ -6,11 +6,11 @@
 #    By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 16:01:36 by nsahloum          #+#    #+#              #
-#    Updated: 2020/07/19 15:04:32 by nsahloum         ###   ########.fr        #
+#    Updated: 2020/07/20 12:49:51 by nsahloum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
+NAME		=	libftprintf.a
 SRCS		=	ft_all_prints_csp.c ft_all_prints_dux.c ft_printf.c \
 
 OBJS		= $(SRCS:.c=.o)

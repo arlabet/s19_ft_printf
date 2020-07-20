@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/19 15:03:33 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 13:20:57 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 int main(void)
 { 
 
-	ft_printf("%d %s %c", 12, "test", 't');
-	printf("%d %s %c", 12, "test", 't');
+	ft_printf("hello world!");
+	printf ("%c", '\n');
+	printf("hello world!");
+	/*system("leaks a.out")*/;
 }

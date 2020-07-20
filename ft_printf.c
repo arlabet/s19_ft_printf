@@ -6,53 +6,35 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/19 15:09:41 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/20 13:22:38 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_apply_type(const char *format, int i, va_list argp)
+int		ft_check_flag(char *tab_flag, char c)
 {
-	if (format[i] == 'c')
-		ft_print_char(va_arg(argp, int), format, i);
-	if (format[i] == 's')
-		ft_print_string(va_arg(argp, char *), format, i);
-	if (format[i] == 'p')
-		ft_print_pointer(va_arg(argp, size_t), format, i);
-	if (format[i] == 'd' || format[i] == 'i')
-		ft_print_num(va_arg(argp, int), format, i);
-	if (format[i] == 'u')
-		ft_print_num_uns(va_arg(argp, unsigned int), format, i);
-	if (format[i] == 'x')
-		ft_print_hexlow(va_arg(argp, unsigned int), format, i);
-	if (format[i] == 'X')
-		ft_print_hexup(va_arg(argp, unsigned int), format, i);
-}
+	int i;
 
-int		ft_check_type(char format)
-{
-	if (format == 'c' || format == 's' || format == 'p' || format == 'd'
-	|| format == 'i' || format == 'u' || format == 'x' || format == 'X')
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_is_flag(char c)
-{
-	if (ft_isdigit(c) || c == '-' || c == '.')
-		return (1);
-	return (0);
+	i = 0;
+	while (tab_flag[i])
+	{
+		if (tab_flag[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
 void	ft_check_format(const char *format, va_list argp)
 {
-	int	i;
-	int	begin;
-	int p;
-
-	p = 0;
+	int			i;
+	int			begin;
+	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
+	static void (*tab_func[7]) (va_list) = {&ft_print_char, &ft_print_string,
+	&ft_print_pointer, &ft_print_num, &ft_print_num_uns, &ft_print_hexlow, 
+	&ft_print_hexup};
+	
 	i = 0;
 	while (format[i])
 	{
@@ -62,14 +44,11 @@ void	ft_check_format(const char *format, va_list argp)
 			begin = 1;
 			i++;
 		}
-		if (format[i] == '%' && begin)
-		{
-			p++;
-			if (p % 2)
-				ft_putchar_fd('%', 1);
-		}
-		if (ft_check_type(format[i]) && begin)
-			ft_apply_type(format, i, argp);
+		if (format[i] == '%' && format[i - 1] == '%' && i != 0)
+			ft_putchar_fd('%', 1);
+		if (ft_check_flag(tab_flag, format[i]) != -1 && begin)
+			tab_func[ft_check_flag(tab_flag, format[i])](argp);
+
 		else if (format[i] != '%')
 			ft_putchar_fd(format[i], 1);
 		if (format[i])
