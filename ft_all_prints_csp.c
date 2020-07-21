@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 18:16:31 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 19:39:05 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_print_string(va_list argp)
 	else if (g_width < 0)
 		nbr_space = (ft_abs(g_width) > len) ? ft_abs(g_width) - len : 0;
 	if (nbr_space > 0 && ft_abs(g_width) == g_width)
-		ft_print_space_format(nbr_space, zero);
+		ft_print_space_format(nbr_space, zero, 0);
 	if (g_prec != 0)
 		ft_crop(str, g_prec);
 	if (nbr_space > 0 && ft_abs(g_width) != g_width)
-		ft_print_space_format(nbr_space, zero);
+		ft_print_space_format(nbr_space, zero, 0);
 }
 
 void	ft_print_pointer(va_list argp)

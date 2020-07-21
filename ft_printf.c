@@ -6,17 +6,21 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 18:16:42 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:22:38 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_space_format(int nbr, int zero)
+void	ft_print_space_format(int nbr, int zero, int neg)
 {
 	char c;
 	
 	c = (zero == 1) ? '0' : ' ';
+	if (neg && zero)
+		ft_putchar_fd('-', 1);
+	if (!zero && neg && g_prec >= g_len && g_len != 0)
+		nbr--;
 	while(nbr--)
 		ft_putchar_fd(c, 1);
 }

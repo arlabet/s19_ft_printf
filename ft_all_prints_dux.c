@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 18:46:39 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:15:26 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,29 @@
 void	ft_print_num(va_list argp)
 {
 	int nbr;
-	int nbr_space;
 	int zero;
-	int len;
-
-	zero = (g_prec > 0 || (g_w && g_w[0] == '0')) ? 1 : 0;
+	int neg;
+	
 	nbr = va_arg(argp, int);
-	len = ft_len_nbr(nbr);
-	if (nbr < 0 && zero == 1)
+	g_len = ft_len_nbr(nbr);
+	neg = (nbr < 0 && (g_prec > g_len || (g_w && g_w[0] == '0'))) ? 1 : 0;
+	nbr = (neg && ((g_prec > 0 && g_prec > g_len) || (g_w && g_w[0] == '0' && 
+	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
+	if (g_width > 0)
 	{
-		ft_putchar_fd('-', 1);
-		nbr = ft_abs(nbr);
-		if (g_prec > 0)
-			len--;
+		zero = (g_w && g_w[0] == '0' && g_prec < 0) ? 1 : 0;
+		g_len = (g_prec > 0 && g_prec > g_len) ? g_prec : g_len;
+		if (g_width > g_len)
+			ft_print_space_format(g_width - g_len, zero, neg);
 	}
-	nbr_space = (g_width != 0 && ft_abs(g_width) > len) ? 
-	ft_abs(g_width) - len : 0;
-	if (g_width == 0 && g_prec > 0 && g_prec > len)
-		nbr_space = g_prec - len;
-	if ((nbr_space > 0 && (g_width == ft_abs(g_width))) || g_prec > 0)
-		ft_print_space_format(nbr_space, zero);
-	if (g_prec != 0)
-		ft_putnbr_fd(nbr, 1);
-	if (nbr_space > 0 && g_width != ft_abs(g_width))
-		ft_print_space_format(nbr_space, zero);
+	if (g_prec > 0 && g_prec > ft_len_nbr(nbr))
+		ft_print_space_format(g_prec - ft_len_nbr(nbr), 1, neg);
+	ft_putnbr_fd(nbr, 1);
+	if (g_width < 0 && ft_abs(g_width) > g_len)
+	{
+		g_len = (g_prec > 0 && g_prec > g_len) ? g_prec : g_len;
+		ft_print_space_format(ft_abs(g_width) - g_len, 0, neg);
+	}
 	ft_reset();
 }
 
