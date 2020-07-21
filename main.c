@@ -6,18 +6,16 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 20:19:47 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 21:01:47 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int main(void)
-{ 
-	ft_printf("%10.5i", -216);
-	printf ("%c", '\n');
+int	main(void)
+{
+	ft_printf("%s %c %i", "test", 't', 12);
+	printf("%c", '\n');
 	printf("%10.5i", -216);
-	//printf("%.5i", 2);
-	/*system("leaks a.out")*/;
 }

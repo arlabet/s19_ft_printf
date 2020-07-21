@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 15:56:28 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 16:01:39 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:46:41 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ int	ft_len_nbr(int nbr)
 		nbr = nbr / 10;
 		i++;
 	}
-	return(i + 1);
+	return (i + 1);
 }

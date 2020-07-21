@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:16:46 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 15:58:23 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:49:18 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
-int g_nbrchar;
+int		g_nbrchar;
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -55,9 +55,8 @@ void	ft_putnbr_u_fd(unsigned int n, int fd);
 void	ft_putnbr_base_fd(size_t nb, char *base, int fd);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int 	ft_abs (int nbr);
+int		ft_abs (int nbr);
 char	ft_lastchar(const char *str);
 int		ft_len_nbr(int nbr);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 14:59:17 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 15:06:06 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:52:59 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	ft_lastchar(const char *str)
 {
 	int i;
-	
+
 	i = ft_strlen(str);
 	return (str[i - 1]);
 }

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 20:13:10 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 20:57:46 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_reset(void);
 int		ft_len_nbr(int nbr);
 
 static void (*g_tab_func[8]) (va_list) = {&ft_print_char, &ft_print_string,
-	&ft_print_pointer, &ft_print_num, &ft_print_num, &ft_print_num_uns, &ft_print_hexlow, 
-	&ft_print_hexup};
+	&ft_print_pointer, &ft_print_num, &ft_print_num, &ft_print_num_uns,
+	&ft_print_hexlow, &ft_print_hexup};
 
 #endif
