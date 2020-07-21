@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 01:43:57 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 15:20:44 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void ft_reset(void)
 {
 	g_width = 0;
 	g_prec = 0;
-	g_noprint = 0;
 	g_p = NULL;
 	g_w = NULL;
-	g_noprint = 0;
+	g_noprint_s = 0;
 }

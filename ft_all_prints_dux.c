@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 00:32:59 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:39:20 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	ft_crop(char *str, int end)
 	int i;
 
 	i = 0;
-	while (i < end)
+	if (end == 0 || end >= ft_strlen(str))
+		ft_putstr_fd(str, 1);
+	while (i < end && end < ft_strlen(str))
 	{
 		ft_putchar_fd(str[i], 1);
 		i++;

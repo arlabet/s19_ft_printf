@@ -6,17 +6,17 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 01:45:32 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 15:40:25 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_space_format(int nbr)
+void	ft_print_space_format(int nbr, int zero)
 {
 	char c;
 
-	c = ' ';
+	c = (zero == 1) ? '0' : ' ';
 	while(nbr--)
 		ft_putchar_fd(c, 1);
 }
@@ -24,7 +24,7 @@ void	ft_print_space_format(int nbr)
 int		ft_check_flag(char c)
 {
 	int i;
-	static char	tab_flag[8] = {'c', 's', 'p', 'd', 'u', 'x', 'X', 0};
+	static char	tab_flag[9] = {'c', 's', 'p', 'd', 'i', 'u', 'x', 'X', 0};
 
 	i = 0;
 	while (tab_flag[i])

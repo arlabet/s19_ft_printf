@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 01:47:00 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 15:41:20 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,29 @@ void	ft_print_char(va_list argp)
 void	ft_print_string(va_list argp)
 {
 	char *str;
-	int nbr;
-	
-	if (g_noprint != -1)
+	int len;
+	int nbr_space;
+	int zero;
+
+	nbr_space = 0;
+	str = va_arg(argp, char *);
+	if (str == NULL)
+		str = "(null)";
+	len = ((g_prec < ft_strlen(str) && g_prec != 0) || g_noprint_s == -1) ? 
+	g_prec : ft_strlen(str);
+	if (g_width > 0)
 	{
-		str = va_arg(argp, char *);
-		if(g_width > 0 && g_width > ft_strlen(str))
-		{
-			nbr = g_width - ft_strlen(str);
-			ft_print_space_format(nbr);
-		}
-		if (g_prec == 0 || g_prec > ft_strlen(str))
-			ft_putstr_fd(str, 1);
-		if (g_prec < ft_strlen(str))
-			ft_crop(str, g_prec);
-		if (g_width < 0 && ft_abs(g_width) > ft_strlen(str))
-		{
-			nbr = ft_abs(g_width) - ft_strlen(str);
-			ft_print_space_format(nbr);
-		}
+		nbr_space = (g_width > len) ? g_width - len : 0;
+		zero = (g_w && g_w[0] == '0') ? 1 : 0;
 	}
+	else if (g_width < 0)
+		nbr_space = (ft_abs(g_width) > len) ? ft_abs(g_width) - len : 0;
+	if (nbr_space > 0 && ft_abs(g_width) == g_width)
+		ft_print_space_format(nbr_space, zero);
+	if (g_noprint_s != -1)
+		ft_crop(str, g_prec);
+	if (nbr_space > 0 && ft_abs(g_width) != g_width)
+		ft_print_space_format(nbr_space, zero);
 	ft_reset();
 }
 
@@ -81,18 +84,25 @@ void	ft_print_space(const char *format, int i)
 
 void	ft_stock(const char *format, int i)
 {
-	if (format[i] == '.' || format[i] == '0')
-		g_noprint = -1;
-	while (ft_isdigit(format[i]) || format[i] == '-')
+	if ((format[i] == '.' && !ft_isdigit(format[i + 1])) || 
+	(format[i] == '0' && format[i - 1] == '.'))
+		g_noprint_s = -1;
+	while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
 		i--;
-	if (format[i] != '.')
-	{
-		g_w = &format[i + 1];
-		g_width = ft_atoi(&format[i + 1]);
-	}
-	else if (format[i] == '.')
+	if (format[i] == '.')
 	{
 		g_p = &format[i + 1];
 		g_prec = ft_atoi(&format[i + 1]);
+		if (g_prec == 0)
+			g_noprint_s = -1;
+	}
+	if (format[i] != '.' || (format[i] == '.' && ft_isdigit(format[i - 1])))
+	{
+		if (format[i] == '.')
+			i--;
+		while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
+			i--;
+		g_w = &format[i + 1];
+		g_width = ft_atoi(&format[i + 1]);
 	}
 }

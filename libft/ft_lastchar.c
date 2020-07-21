@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lastchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 15:40:57 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/07/21 14:59:17 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/21 15:06:06 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(void)
-{ 
+char	ft_lastchar(const char *str)
+{
+	int i;
 	
-	ft_printf("%09s", "hello");
-	printf ("%c", 't');
-	printf ("%c", '\n');
-	printf("%09s", "hello");
-	/*system("leaks a.out")*/;
+	i = ft_strlen(str);
+	return (str[i - 1]);
 }
