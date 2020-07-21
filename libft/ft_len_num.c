@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reset.c                                   :+:      :+:    :+:   */
+/*   ft_len_num.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 18:14:01 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/07/21 15:56:28 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/21 16:01:39 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void ft_reset(void)
+int	ft_len_nbr(int nbr)
 {
-	/*printf("\nLes Globales :\n");
-	printf(" int prec : %d\n char p : %s\n int width : %d\n char w : %s\n", g_prec, g_p, g_width, g_w);
-	printf("-----------\n");*/
-	g_width = 0;
-	g_prec = -1;
-	g_p = NULL;
-	g_w = NULL;
+	int i;
+
+	i = 0;
+	if (nbr < 0)
+		i = 1;
+	nbr = ft_abs(nbr);
+	while (nbr >= 10)
+	{
+		nbr = nbr / 10;
+		i++;
+	}
+	return(i + 1);
 }

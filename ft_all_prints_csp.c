@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 15:41:20 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:16:31 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_print_string(va_list argp)
 	int nbr_space;
 	int zero;
 
+	zero = (g_w && g_w[0] == '0') ? 1 : 0;
 	nbr_space = 0;
 	str = va_arg(argp, char *);
 	if (str == NULL)
@@ -34,19 +35,15 @@ void	ft_print_string(va_list argp)
 	len = ((g_prec < ft_strlen(str) && g_prec != 0) || g_noprint_s == -1) ? 
 	g_prec : ft_strlen(str);
 	if (g_width > 0)
-	{
 		nbr_space = (g_width > len) ? g_width - len : 0;
-		zero = (g_w && g_w[0] == '0') ? 1 : 0;
-	}
 	else if (g_width < 0)
 		nbr_space = (ft_abs(g_width) > len) ? ft_abs(g_width) - len : 0;
 	if (nbr_space > 0 && ft_abs(g_width) == g_width)
 		ft_print_space_format(nbr_space, zero);
-	if (g_noprint_s != -1)
+	if (g_prec != 0)
 		ft_crop(str, g_prec);
 	if (nbr_space > 0 && ft_abs(g_width) != g_width)
 		ft_print_space_format(nbr_space, zero);
-	ft_reset();
 }
 
 void	ft_print_pointer(va_list argp)

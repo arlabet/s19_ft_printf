@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 15:40:25 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:16:42 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_print_space_format(int nbr, int zero)
 {
 	char c;
-
+	
 	c = (zero == 1) ? '0' : ' ';
 	while(nbr--)
 		ft_putchar_fd(c, 1);
@@ -51,6 +51,7 @@ void	ft_check_format(const char *format, va_list argp)
 	i = 0;
 	while (format[i])
 	{
+		ft_reset();
 		begin = 0;
 		if (format[i] == '%' && ft_strlen(format) > 1)
 		{
