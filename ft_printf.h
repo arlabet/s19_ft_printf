@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 20:57:46 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/23 23:10:34 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		g_width;
 const char	*g_w;
 int		g_prec;
 const char	*g_p;
-int		g_noprint_s;
 int		g_len;
 
 void	ft_check_format(const char *format, va_list argp);
