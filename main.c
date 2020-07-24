@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/23 14:03:42 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:04:23 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int	main(void)
 {
-	ft_printf("%0-8.5i", 34);
+	ft_printf("%0-8.5i %c", 34, 't');
+	printf("\natoi == %d", atoi("0-8.5i"));
 	printf("%c", '\n');
 	printf("%0-8.5i", 34);
 }

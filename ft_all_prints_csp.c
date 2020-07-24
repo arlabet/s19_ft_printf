@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/23 14:10:51 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:01:36 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,12 @@ void	ft_print_space(const char *format, int i)
 
 void	ft_stock(const char *format, int i)
 {
-	if ((format[i] == '.' && !ft_isdigit(format[i + 1])) ||
-	(format[i] == '0' && format[i - 1] == '.'))
-		g_noprint_s = -1;
 	while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
 		i--;
 	if (format[i] == '.')
 	{
 		g_p = &format[i + 1];
 		g_prec = ft_atoi(&format[i + 1]);
-		//if (g_prec == 0)
-		//	g_noprint_s = -1;
 	}
 	if (format[i] != '.' || (format[i] == '.' && ft_isdigit(format[i - 1])))
 	{
@@ -99,7 +94,8 @@ void	ft_stock(const char *format, int i)
 			i--;
 		while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
 			i--;
-		g_w = &format[i + 1];
-		g_width = ft_atoi(&format[i + 1]);
+		i++;
+		g_w = &format[i];
+		g_width = ft_atoi(&format[i]);
 	}
 }

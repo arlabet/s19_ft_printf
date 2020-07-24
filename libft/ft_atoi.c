@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:47:02 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/01/22 15:44:50 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:03:21 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(const char *str)
 	n = 0;
 	if (!str)
 		return (0);
-	while ((*str >= 9 && *str <= 13) || *str == 32)
+	while ((*str >= 9 && *str <= 13) || *str == 32 || *str == '0')
 		str++;
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
