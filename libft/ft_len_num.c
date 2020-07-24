@@ -6,13 +6,13 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 15:56:28 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 20:46:41 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:45:02 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_len_nbr(int nbr)
+int	ft_len_nbr(int nbr, int base)
 {
 	int i;
 
@@ -20,9 +20,9 @@ int	ft_len_nbr(int nbr)
 	if (nbr < 0)
 		i = 1;
 	nbr = ft_abs(nbr);
-	while (nbr >= 10)
+	while (nbr >= base)
 	{
-		nbr = nbr / 10;
+		nbr = nbr / base;
 		i++;
 	}
 	return (i + 1);
