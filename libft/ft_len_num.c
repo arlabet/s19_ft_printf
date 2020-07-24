@@ -6,12 +6,12 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 15:56:28 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/24 21:45:02 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/24 23:44:23 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 int	ft_len_nbr(int nbr, int base)
 {
 	int i;
