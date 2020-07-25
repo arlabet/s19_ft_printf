@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:12:01 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 16:00:56 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_num(va_list argp)
 {
-	long int nbr;
-	int zero;
-	int neg;
+	long int	nbr;
+	int			zero;
+	int			neg;
 
 	nbr = va_arg(argp, int);
 	g_len = ft_len_nbr(nbr, 10);

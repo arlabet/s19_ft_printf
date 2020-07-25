@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 15:56:28 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 14:24:53 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 15:58:49 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int	ft_len_nbr(int nbr, int base)
 {
-	long int n;
-	int i;
+	long int	n;
+	int			i;
+
 	n = nbr;
 	i = 0;
 	if (n < 0)
