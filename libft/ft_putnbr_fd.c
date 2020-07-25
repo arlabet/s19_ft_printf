@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 15:59:22 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/24 23:44:05 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 14:03:21 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int nbr;
+	long int nbr;
 
 	nbr = n;
 	if (fd >= 0 && fd < OPEN_MAX)

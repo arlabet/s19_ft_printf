@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 02:46:07 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 15:27:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_print_pointer(va_list argp)
 	}
 }
 
-void	ft_print_space(const char *format, int i)
+void	ft_print_space(const char *format, int i, int begin)
 {
 	int		nbr_space;
 	int		abs;
@@ -100,7 +100,7 @@ void	ft_print_space(const char *format, int i)
 		ft_putchar_fd('%', 1);
 }
 
-void	ft_stock(const char *format, int i)
+void	ft_stock(const char *format, int i, va_list argp)
 {
 	while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
 		i--;
@@ -119,4 +119,10 @@ void	ft_stock(const char *format, int i)
 		g_w = &format[i];
 		g_width = ft_atoi(&format[i]);
 	}
+	if (format[i] == '.' && format[i - 1] == '*')
+	{
+		g_width = va_arg(argp, int);
+		g_width = (format[i - 2] == '-' && g_width > 0) ? g_width * -1 :
+		g_width;  
+	} 
 }

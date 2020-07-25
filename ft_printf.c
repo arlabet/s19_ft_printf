@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 02:45:11 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 15:30:37 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_check_flag(char c)
 int		ft_is_flag(const char *format, int i)
 {
 	if (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '.' ||
-	format[i] == '+' || format[i] == ' ')
+	format[i] == '+' || format[i] == ' ' || format[i] == '*')
 		return (1);
 	return (0);
 }
@@ -60,19 +60,21 @@ void	ft_check_format(const char *format, va_list argp)
 		begin = (format[i] == '%') ? 1 : 0;
 		if (format[i] == '%' && ft_strlen(format) > 1)
 			i++;
+		ft_is_space(format[i], begin);
 		while (ft_is_flag(format, i) && begin)
 			i++;
-		if (i != 0 && ft_isdigit(format[i - 1]) && begin && format[i] == '%')
-			ft_print_space(format, i - 1);
-		if (ft_check_flag(format[i]) != -1 && begin &&
-		(ft_isdigit(format[i - 1]) || format[i - 1] == '.'))
-			ft_stock(format, i - 1);
+		if ((i != 0 && ft_isdigit(format[i - 1]) && begin && format[i] == '%'))
+			ft_print_space(format, i - 1, begin);
+		if (ft_check_flag(format[i]) != -1 && begin && format[i - 1] == '*')
+			ft_stock_star(format, i - 1, 1, argp);
+		if (ft_check_flag(format[i]) != -1 && begin && (ft_isdigit(format[i - 1]) 
+		|| format[i - 1] == '.'))
+			ft_stock(format, i - 1, argp);
 		if (ft_check_flag(format[i]) != -1 && begin)
 			g_tab_func[ft_check_flag(format[i])](argp);
 		else if (format[i] != '%' || (format[i] == '%' && format[i - 1] == '%'))
 			ft_putchar_fd(format[i], 1);
-		if (format[i])
-			i++;
+		i++;
 	}
 }
 
