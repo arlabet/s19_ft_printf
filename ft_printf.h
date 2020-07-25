@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:29:17 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 15:37:57 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void		ft_reset(void);
 int			ft_len_pointer(size_t nbr);
 void		ft_stock_star(const char *format, int i, int star, va_list argp);
 void		ft_is_space(char c, int begin);
+void		ft_print_octal(va_list argp);
 
-static void (*g_tab_func[8]) (va_list) = {&ft_print_char, &ft_print_string,
+static void (*g_tab_func[9]) (va_list) = {&ft_print_char, &ft_print_string,
 	&ft_print_pointer, &ft_print_num, &ft_print_num, &ft_print_num_uns,
-	&ft_print_hexlow, &ft_print_hexup};
+	&ft_print_hexlow, &ft_print_hexup, &ft_print_octal};
 
 #endif

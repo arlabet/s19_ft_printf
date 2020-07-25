@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:30:37 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 15:38:22 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_print_space_format(int nbr, int zero, int neg)
 int		ft_check_flag(char c)
 {
 	int			i;
-	static char	tab_flag[9] = {'c', 's', 'p', 'd', 'i', 'u', 'x', 'X', 0};
+	static char	tab_flag[10] = {'c', 's', 'p', 'd', 'i', 'u', 'x', 'X', 'o', 0};
 
 	i = 0;
 	while (tab_flag[i])
