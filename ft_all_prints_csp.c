@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 02:06:17 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 02:24:05 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_print_pointer(va_list argp)
 		zero = (g_w && g_w[0] == '0' && g_prec < 0) ? 1 : 0;
 		g_len = (g_prec == 0 || g_prec > g_len) ? g_prec : g_len;
 		if (g_width > g_len + 2)
-			ft_print_space_format(g_width - g_len - 2, zero, neg);
+			ft_print_space_format(g_width - g_len - 2, 0, 0);
 	}
 	ft_putstr_fd("0x", 1);
 	if (g_prec > 0 && g_prec > ft_len_pointer(nbr))
@@ -76,7 +76,7 @@ void	ft_print_pointer(va_list argp)
 	if (g_width < 0 && ft_abs(g_width) > g_len)
 	{
 		g_len = (g_prec == 0 || g_prec > g_len) ? g_prec : g_len;
-		ft_print_space_format(ft_abs(g_width) - g_len, 0, neg);
+		ft_print_space_format(ft_abs(g_width) - g_len - 2, 0, 0);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 02:03:55 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 02:23:00 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(void)
 {
 	char *a;
-	ft_printf("%15p", &a);
+	ft_printf("%-15p %c", &a, 't');
 	printf("%c", '\n');
-	printf("%15p", &a);
+	printf("%-15p", &a);
 }
