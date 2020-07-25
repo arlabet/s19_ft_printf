@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/21 20:42:07 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 02:12:14 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int		ft_check_flag(char c)
 
 int		ft_is_flag(const char *format, int i)
 {
-	if (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '.')
+	if (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '.' || 
+	format[i] == '+' || format[i] == ' ')
 		return (1);
 	return (0);
 }
