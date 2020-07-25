@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 02:24:05 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 02:46:07 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,11 @@ void	ft_print_string(va_list argp)
 
 void	ft_print_pointer(va_list argp)
 {
-	size_t nbr;
-	int zero;
-	int neg;
+	size_t	nbr;
+	int		zero;
 
 	nbr = va_arg(argp, size_t);
 	g_len = ft_len_pointer(nbr);
-	neg = (nbr < 0 && (g_prec > g_len || (g_w && g_w[0] == '0'))) ? 1 : 0;
-	nbr = (neg && ((g_prec > 0 && g_prec > g_len) || (g_w && g_w[0] == '0' &&
-	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
 	if (g_width > 0)
 	{
 		zero = (g_w && g_w[0] == '0' && g_prec < 0) ? 1 : 0;
@@ -70,7 +66,7 @@ void	ft_print_pointer(va_list argp)
 	}
 	ft_putstr_fd("0x", 1);
 	if (g_prec > 0 && g_prec > ft_len_pointer(nbr))
-		ft_print_space_format(g_prec - ft_len_pointer(nbr), 1, neg);
+		ft_print_space_format(g_prec - ft_len_pointer(nbr), 1, 0);
 	if (g_prec != 0)
 		ft_putnbr_base_fd(nbr, "0123456789abcdef", 1);
 	if (g_width < 0 && ft_abs(g_width) > g_len)

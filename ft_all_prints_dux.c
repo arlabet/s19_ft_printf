@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/24 23:43:54 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/25 02:47:47 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	ft_print_num(va_list argp)
 
 void	ft_print_num_uns(va_list argp)
 {
-	unsigned int nbr;
-	int zero;
-	int neg;
+	unsigned int	nbr;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr(nbr, 10);
@@ -72,9 +72,9 @@ void	ft_print_num_uns(va_list argp)
 
 void	ft_print_hexlow(va_list argp)
 {
-	unsigned int nbr;
-	int zero;
-	int neg;
+	unsigned int	nbr;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr(nbr, 16);
@@ -101,9 +101,9 @@ void	ft_print_hexlow(va_list argp)
 
 void	ft_print_hexup(va_list argp)
 {
-	unsigned int nbr;
-	int zero;
-	int neg;
+	unsigned int	nbr;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr(nbr, 16);
