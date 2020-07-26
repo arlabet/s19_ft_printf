@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 19:57:58 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:42:25 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/26 20:46:10 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 int	main(void)
 {
-	char *a;
-	ft_printf("%.*o %c", -10, 12345, 't');
+	ft_printf("% *.5i", 4, 420000);
 	printf("%c", '\n');
-	printf("%.*o", -10, 12345);
+	printf("% *.5i", 4, 420000);
+	printf("%c", '\n');
+	ft_printf("% *.5s", 4, "test");
+	printf("%c", '\n');
+	printf("% *.5s", 4, "test");
 }

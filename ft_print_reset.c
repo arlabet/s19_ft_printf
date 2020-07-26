@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 16:01:40 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/26 20:45:56 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_reset(void)
 	g_p = NULL;
 	g_w = NULL;
 	g_len = 0;
+	g_space = 0;
 }
 
 int		ft_len_pointer(size_t nbr)
@@ -38,6 +39,9 @@ int		ft_len_pointer(size_t nbr)
 
 void	ft_stock_star(const char *format, int i, int star, va_list argp)
 {
+	int space;
+
+	space = 0;
 	while (format[i] == '*' || format[i] == '.')
 		i--;
 	i++;
@@ -52,10 +56,4 @@ void	ft_stock_star(const char *format, int i, int star, va_list argp)
 	g_w = (g_width != 0 && format[i - 1] == '0') ? "00"
 	: ft_itoa(g_width);
 	g_p = ft_itoa(g_prec);
-}
-
-void	ft_is_space(char c, int begin)
-{
-	if (c == ' ' && begin)
-		ft_putchar_fd(' ', 1);
 }

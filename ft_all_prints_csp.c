@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:59:40 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/26 20:37:34 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,7 @@ void	ft_stock(const char *format, int i, va_list argp)
 		g_width = va_arg(argp, int);
 		g_width = (format[i - 2] == '-' && g_width > 0) ? g_width * -1 :
 		g_width;
+		if (format[i - 2] == ' ')
+			g_space = 1;
 	}
 }

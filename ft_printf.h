@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 15:55:20 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/26 20:27:22 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ const char	*g_w;
 int			g_prec;
 const char	*g_p;
 int			g_len;
+int			g_space;
 
 void		ft_check_format(const char *format, va_list argp);
 int			ft_printf(const char *format, ...);
@@ -41,7 +42,6 @@ void		ft_crop(char *str, int end);
 void		ft_reset(void);
 int			ft_len_pointer(size_t nbr);
 void		ft_stock_star(const char *format, int i, int star, va_list argp);
-void		ft_is_space(char c, int begin);
 void		ft_print_octal(va_list argp);
 int			ft_is_flag(const char *format, int i, int begin);
 
