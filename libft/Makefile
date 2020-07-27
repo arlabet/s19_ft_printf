@@ -6,7 +6,7 @@
 #    By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/09 11:40:31 by nsahloum          #+#    #+#              #
-#    Updated: 2020/07/21 15:57:52 by nsahloum         ###   ########.fr        #
+#    Updated: 2020/07/27 18:57:44 by nsahloum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS	= 	ft_isalnum.c 	\
 			ft_abs.c \
 			ft_lastchar.c \
 			ft_len_num.c \
+			ft_len_nbr_u.c \
 
 OBJS	= ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:16:31 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/03/10 14:56:41 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/27 18:27:09 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void	ft_putnbr_base_fd(size_t nb, char *base, int fd)
 	if (nbr >= ft_size_base(base))
 		ft_putnbr_base_fd((nbr / ft_size_base(base)), base, fd);
 	ft_putchar_fd(base[nbr % ft_size_base(base)], fd);
+	
 }

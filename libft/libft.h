@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/06 16:16:46 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/25 14:03:34 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 01:36:54 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_abs (int nbr);
 char	ft_lastchar(const char *str);
 int		ft_len_nbr(int nbr, int base);
+int		ft_len_nbr_u(int nbr, int base);
 
 #endif

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_len_nbr_u.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 15:43:09 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/02 00:20:25 by nsahloum         ###   ########.fr       */
+/*   Created: 2020/07/27 18:53:24 by nsahloum          #+#    #+#             */
+/*   Updated: 2020/07/27 18:54:09 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
+int	ft_len_nbr_u(unsigned int nbr, int base)
 {
-	int i;
+	long int	n;
+	int			i;
 
+	n = nbr;
 	i = 0;
-	if (s)
+	if (n < 0)
 	{
-		while (s[i])
-		{
-			ft_putchar_fd(s[i], fd);
-			i++;
-		}
+		i = 1;
+		n = n * -1;
 	}
+	while (n >= base)
+	{
+		n = n / base;
+		i++;
+	}
+	return (i + 1);
 }

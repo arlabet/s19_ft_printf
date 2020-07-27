@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/26 20:45:56 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/27 18:09:42 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_reset(void)
 	g_w = NULL;
 	g_len = 0;
 	g_space = 0;
+	g_star = 0;
 }
 
 int		ft_len_pointer(size_t nbr)
@@ -40,8 +41,11 @@ int		ft_len_pointer(size_t nbr)
 void	ft_stock_star(const char *format, int i, int star, va_list argp)
 {
 	int space;
+	int is_star;
 
 	space = 0;
+	g_star = 1;
+	is_star = 1;
 	while (format[i] == '*' || format[i] == '.')
 		i--;
 	i++;
@@ -53,7 +57,21 @@ void	ft_stock_star(const char *format, int i, int star, va_list argp)
 		g_prec = va_arg(argp, int);
 	if (format[i] == '.')
 		g_prec = va_arg(argp, int);
-	g_w = (g_width != 0 && format[i - 1] == '0') ? "00"
-	: ft_itoa(g_width);
+	if (format[i] == '.' && ft_isdigit(format[i - 1]))
+	{
+		ft_w_not_star(format, i - 1);
+		is_star = 0;
+	}
+	if (is_star == 1)
+		g_w = (g_width != 0 && format[i - 1] == '0') ? "00"
+		: ft_itoa(g_width);
 	g_p = ft_itoa(g_prec);
+}
+
+void	ft_w_not_star(const char *format, int i)
+{
+	while (ft_isdigit(format[i]))
+			i--;
+	g_width = ft_atoi(&format[i + 1]);
+	g_w = &format[i + 1];
 }
