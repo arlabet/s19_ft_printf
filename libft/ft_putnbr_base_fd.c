@@ -6,13 +6,13 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:16:31 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/27 18:27:09 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 03:54:09 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_size_base(char *base)
+long unsigned int ft_size_base(char *base)
 {
 	int i;
 	int j;
@@ -38,7 +38,7 @@ int		ft_size_base(char *base)
 
 void	ft_putnbr_base_fd(size_t nb, char *base, int fd)
 {
-	long int nbr;
+	long unsigned int nbr;
 
 	nbr = nb;
 	if (ft_size_base(base) == 0)
