@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 05:11:27 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:45:36 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_print_pointer(va_list argp)
 		ft_putnbr_base_fd(nbr, "0123456789abcdef", 1);
 	if (g_width < 0 && ft_abs(g_width) > g_len + 2)
 	{
-		g_len = (g_prec == 0 || g_prec > g_len) ? g_prec : g_len;
+		g_len = ((g_prec == 0 && nbr == 0) || g_prec > g_len) ? g_prec : g_len;
 		ft_print_space_format(ft_abs(g_width) - g_len - 2, 0, 0);
 	}
 }
@@ -94,10 +94,10 @@ void	ft_print_space(const char *format, int i, int begin, va_list argp)
 		c = ' ';
 	if (format[i + 1] == '*')
 		nbr_space = va_arg(argp, int);
-	if (format[i + 1] == '-' && format[i + 2] == '*')
+	else if (format[i + 1] == '-' && format[i + 2] == '*')
 		nbr_space = va_arg(argp, int) * -1;
 	else
-		nbr_space = atoi(&format[i + 1]);
+		nbr_space = ft_atoi(&format[i + 1]);
 	if (nbr_space < 0)
 		ft_putchar_fd('%', 1);
 	abs = ft_abs(nbr_space);
