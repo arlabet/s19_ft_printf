@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 17:47:02 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/24 21:03:21 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 03:48:34 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_atoi(const char *str)
 		return (0);
 	while ((*str >= 9 && *str <= 13) || *str == 32 || *str == '0')
 		str++;
-	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			neg = 1;
+	if (*str == '-')
+		neg = 1;
+	while (*str == '-' || *str == '+')
+		str++;
 	while (ft_isdigit(*str))
 	{
 		n = (n * 10) + *str++ - 48;
