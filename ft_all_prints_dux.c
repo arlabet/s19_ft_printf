@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 17:40:49 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 20:58:06 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_print_num(va_list argp)
 	nbr = va_arg(argp, int);
 	g_len = ft_len_nbr(nbr, 10);
 	neg = (nbr < 0 && (g_prec > g_len - 1 || (g_w && g_w[0] == '0'))) ? 1 : 0;
-	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0' &&
-	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
+	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0'
+	&& g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
 	if (g_space == 1)
 		ft_putchar_fd(' ', 1);
 	zero = (g_w && g_w[0] == '0' && g_prec < 0 && g_width) ? 1 : 0;
@@ -43,14 +43,14 @@ void	ft_print_num(va_list argp)
 void	ft_print_num_uns(va_list argp)
 {
 	unsigned int	nbr;
-	int			zero;
-	int			neg;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr_u(nbr, 10);
 	neg = (nbr < 0 && (g_prec > g_len - 1 || (g_w && g_w[0] == '0'))) ? 1 : 0;
-	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0' &&
-	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
+	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0'
+	&& g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
 	if (g_space == 1)
 		ft_putchar_fd(' ', 1);
 	zero = (g_w && g_w[0] == '0' && g_prec < 0 && g_width) ? 1 : 0;
@@ -71,14 +71,14 @@ void	ft_print_num_uns(va_list argp)
 void	ft_print_hexlow(va_list argp)
 {
 	unsigned int	nbr;
-	int			zero;
-	int			neg;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr_u(nbr, 16);
 	neg = (nbr < 0 && (g_prec > g_len - 1 || (g_w && g_w[0] == '0'))) ? 1 : 0;
-	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0' &&
-	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
+	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0'
+	&& g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
 	if (g_space == 1)
 		ft_putchar_fd(' ', 1);
 	zero = (g_w && g_w[0] == '0' && g_prec < 0 && g_width) ? 1 : 0;
@@ -99,14 +99,14 @@ void	ft_print_hexlow(va_list argp)
 void	ft_print_hexup(va_list argp)
 {
 	unsigned int	nbr;
-	int			zero;
-	int			neg;
+	int				zero;
+	int				neg;
 
 	nbr = va_arg(argp, unsigned int);
 	g_len = ft_len_nbr_u(nbr, 16);
 	neg = (nbr < 0 && (g_prec > g_len - 1 || (g_w && g_w[0] == '0'))) ? 1 : 0;
-	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0' &&
-	g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
+	nbr = (neg && ((g_prec > 0 && g_prec > g_len - 1) || (g_w && g_w[0] == '0'
+	&& g_width > g_len && g_prec < 0))) ? ft_abs(nbr) : nbr;
 	if (g_space == 1)
 		ft_putchar_fd(' ', 1);
 	zero = (g_w && g_w[0] == '0' && g_prec < 0 && g_width) ? 1 : 0;

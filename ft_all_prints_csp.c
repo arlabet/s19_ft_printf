@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 20:47:56 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 20:50:08 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_print_space(const char *format, int i, int begin, va_list argp)
 	|| format[i] == '.')
 		i--;
 	neg = (format[i] == '-') ? -1 : 1;
-	if ((format[i + 1] == '*') || 
+	if ((format[i + 1] == '*') ||
 	(format[i + 1] == '0' && format[i + 2] == '*'))
 		nbr_space = va_arg(argp, int) * neg;
 	else if (ft_isdigit(format[i + 1]))

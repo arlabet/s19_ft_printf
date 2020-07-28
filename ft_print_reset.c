@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 17:31:16 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 20:55:22 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_reset(void)
 int		ft_len_pointer(size_t nbr)
 {
 	long unsigned int	n;
-	int			i;
+	int					i;
 
 	n = nbr;
 	i = 0;
@@ -53,9 +53,7 @@ void	ft_stock_star(const char *format, int i, int star, va_list argp)
 		g_width = va_arg(argp, int);
 	if (format[i - 1] == '-' && g_width != 0)
 		g_width = (g_width < 0) ? g_width : g_width * (-1);
-	if (format[i + 1] == '.')
-		g_prec = va_arg(argp, int);
-	if (format[i] == '.')
+	if (format[i + 1] == '.' || format[i] == '.')
 		g_prec = va_arg(argp, int);
 	if (format[i] == '.' && ft_isdigit(format[i - 1]))
 	{
@@ -71,7 +69,7 @@ void	ft_stock_star(const char *format, int i, int star, va_list argp)
 void	ft_w_not_star(const char *format, int i)
 {
 	while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
-			i--;
+		i--;
 	g_width = ft_atoi(&format[i + 1]);
 	g_w = &format[i + 1];
 }
