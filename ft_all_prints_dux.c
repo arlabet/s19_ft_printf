@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 03:28:34 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 03:46:11 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	ft_print_num_uns(va_list argp)
 	g_len = ((g_prec > g_len) || (g_prec == 0 && nbr == 0)) ? g_prec : g_len;
 	if (g_width > g_len)
 		ft_print_space_format(g_width - g_len, zero, neg);
-	if (g_prec > 0 && g_prec > ft_len_nbr(nbr, 10))
-		ft_print_space_format(g_prec - ft_len_nbr(nbr, 10), 1, neg);
+	if (g_prec > 0 && g_prec > ft_len_nbr_u(nbr, 10))
+		ft_print_space_format(g_prec - ft_len_nbr_u(nbr, 10), 1, neg);
 	if (g_prec != 0 || nbr != 0)
 		ft_putnbr_u_fd(nbr, 1);
 	if (g_width < 0 && ft_abs(g_width) > g_len)

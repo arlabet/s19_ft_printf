@@ -6,25 +6,24 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 18:53:24 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/27 18:54:09 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 03:44:14 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_len_nbr_u(unsigned int nbr, int base)
+int	ft_len_nbr_u(unsigned int nbr, unsigned int base)
 {
-	long int	n;
 	int			i;
 
-	n = nbr;
 	i = 0;
-	if (n < 0)
+
+	if (nbr < 0)
 	{
 		i = 1;
-		n = n * -1;
+		nbr = nbr * -1;
 	}
-	while (n >= base)
+	while (nbr >= base)
 	{
-		n = n / base;
+		nbr = nbr / base;
 		i++;
 	}
 	return (i + 1);
