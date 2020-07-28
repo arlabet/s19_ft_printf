@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 03:56:13 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 04:12:05 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_stock_star(const char *format, int i, int star, va_list argp)
 
 void	ft_w_not_star(const char *format, int i)
 {
-	while (ft_isdigit(format[i]))
+	while (ft_isdigit(format[i]) || format[i] == '-' || format[i] == '+')
 			i--;
 	g_width = ft_atoi(&format[i + 1]);
 	g_w = &format[i + 1];

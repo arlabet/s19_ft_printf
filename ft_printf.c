@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:52:42 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/26 16:44:54 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 04:35:53 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	ft_check_format(const char *format, va_list argp)
 		if (format[i] == '%' && ft_strlen(format) > 1)
 			i++;
 		i = ft_is_flag(format, i, begin);
-		if ((i != 0 && ft_isdigit(format[i - 1]) && begin && format[i] == '%'))
-			ft_print_space(format, i - 1, begin);
+		if ((i != 0 && (ft_isdigit(format[i - 1]) || format[i - 1] == '*') 
+		&& begin && format[i] == '%'))
+			ft_print_space(format, i - 1, begin, argp);
 		if (ft_check_flag(format[i]) != -1 && begin && format[i - 1] == '*')
 			ft_stock_star(format, i - 1, 1, argp);
 		if (ft_check_flag(format[i]) != -1 && begin &&

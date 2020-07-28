@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 18:03:06 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 01:36:49 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 04:35:48 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		ft_print_num(va_list argp);
 void		ft_print_num_uns(va_list argp);
 void		ft_print_hexlow(va_list argp);
 void		ft_print_hexup(va_list argp);
-void		ft_print_space(const char *format, int i, int begin);
+void		ft_print_space(const char *format, int i, int begin, va_list argp);
 void		ft_stock(const char *format, int i, va_list argp);
 void		ft_print_space_format(int nbr, int zero, int neg);
 void		ft_crop(char *str, int end);
