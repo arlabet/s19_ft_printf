@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/27 18:09:42 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 03:56:13 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_reset(void)
 
 int		ft_len_pointer(size_t nbr)
 {
-	long int	n;
+	long unsigned int	n;
 	int			i;
 
 	n = nbr;
