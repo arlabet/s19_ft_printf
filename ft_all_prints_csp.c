@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 20:25:03 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/07/28 20:47:56 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,42 +79,28 @@ void	ft_print_pointer(va_list argp)
 void	ft_print_space(const char *format, int i, int begin, va_list argp)
 {
 	int		nbr_space;
-	int		abs;
 	int		z;
 	char	c;
+	int		neg;
 
 	if (format[i] == '*' && format[i - 1] == '.')
 		va_arg(argp, int);
 	while (ft_isdigit(format[i]) || format[i] == '*'
 	|| format[i] == '.')
 		i--;
-	if (format[i + 1] == '0' && format[i] != '-')
-		c = '0';
-	else
-		c = ' ';
-	
-	if ((format[i + 1] == '*' && format[i] != '-') || 
+	neg = (format[i] == '-') ? -1 : 1;
+	if ((format[i + 1] == '*') || 
 	(format[i + 1] == '0' && format[i + 2] == '*'))
-		nbr_space = va_arg(argp, int);
-	else if (format[i + 1] == '*' && format[i] == '-')
-		nbr_space = va_arg(argp, int) * -1;
-	else if (ft_isdigit(format[i + 1]) && format[i] != '-')
-		nbr_space = ft_atoi(&format[i + 1]);
-	else if (ft_isdigit(format[i + 1]) && format[i] == '-')
-		nbr_space = ft_atoi(&format[i + 1]) * -1;
+		nbr_space = va_arg(argp, int) * neg;
+	else if (ft_isdigit(format[i + 1]))
+		nbr_space = ft_atoi(&format[i + 1]) * neg;
 	if (nbr_space < 0)
-	{
-		c = ' ';
 		ft_putchar_fd('%', 1);
-	}
-	abs = ft_abs(nbr_space);
-	z = abs - 1;
-	while (z > 0)
-	{
+	c = (format[i + 1] == '0' && nbr_space > 0 && format[i] != '-') ? '0' : ' ';
+	z = ft_abs(nbr_space);
+	while (z-- && z > 0)
 		ft_putchar_fd(c, 1);
-		z--;
-	}
-	if (abs == nbr_space)
+	if (ft_abs(nbr_space) == nbr_space)
 		ft_putchar_fd('%', 1);
 }
 
