@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 00:42:57 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/07/28 22:01:00 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/08/06 19:48:03 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_len_pointer(size_t nbr)
 	return (i + 1);
 }
 
-void	ft_stock_star(const char *format, int i, int star, va_list argp)
+void	ft_stock_star(const char *format, int i, va_list argp)
 {
 	int space;
 	int is_star;

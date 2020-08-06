@@ -6,7 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-/*   Updated: 2020/08/06 19:01:29 by nsahloum         ###   ########.fr       */
+/*   Updated: 2020/08/06 19:45:55 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_print_string(va_list argp)
 	str = va_arg(argp, char *);
 	if (str == NULL)
 		str = "(null)";
-	len = ((g_prec < ft_strlen(str) && g_prec != 0) || g_prec == 0) ?
+	len = (((size_t)g_prec < ft_strlen(str) && g_prec != 0) || g_prec == 0) ?
 	g_prec : ft_strlen(str);
 	if (g_width > 0)
 		nbr_space = (g_width > len) ? g_width - len : 0;
