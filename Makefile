@@ -6,17 +6,19 @@
 #    By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/19 16:01:36 by nsahloum          #+#    #+#              #
-#    Updated: 2020/07/25 15:41:35 by nsahloum         ###   ########.fr        #
+#    Updated: 2020/08/06 18:18:25 by nsahloum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libftprintf.a
 SRCS		=	ft_all_prints_csp.c ft_all_prints_dux.c ft_printf.c \
-				ft_print_reset.c ft_print_octal.c\
+				ft_print_reset.c ft_print_octal.c \
 
 OBJS		= $(SRCS:.c=.o)
 LIBFT		= ./libft
 CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 all: makelib $(NAME)
