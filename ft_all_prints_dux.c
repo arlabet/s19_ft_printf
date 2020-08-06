@@ -6,7 +6,11 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:38:59 by nsahloum          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/08/06 19:47:35 by nsahloum         ###   ########.fr       */
+=======
+/*   Updated: 2020/08/06 19:10:41 by nsahloum         ###   ########.fr       */
+>>>>>>> b31d43f6c3983777719643f6e056937742afbd7a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +133,15 @@ void	ft_crop(char *str, int end)
 	int i;
 
 	i = 0;
+<<<<<<< HEAD
 	if (end == 0 || (size_t)end >= ft_strlen(str))
 		ft_putstr_fd(str, 1);
 	while (i < end && (size_t)end < ft_strlen(str))
+=======
+	if (end == 0 || end >= (int)ft_strlen(str))
+		ft_putstr_fd(str, 1);
+	while (i < end && end < (int)ft_strlen(str))
+>>>>>>> b31d43f6c3983777719643f6e056937742afbd7a
 	{
 		ft_putchar_fd(str[i], 1);
 		i++;
