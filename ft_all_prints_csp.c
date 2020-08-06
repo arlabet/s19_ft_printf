@@ -6,11 +6,7 @@
 /*   By: nsahloum <nsahloum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 17:57:15 by nsahloum          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/08/06 19:45:55 by nsahloum         ###   ########.fr       */
-=======
-/*   Updated: 2020/08/06 19:10:17 by nsahloum         ###   ########.fr       */
->>>>>>> b31d43f6c3983777719643f6e056937742afbd7a
+/*   Updated: 2020/08/06 19:51:34 by nsahloum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +36,8 @@ void	ft_print_string(va_list argp)
 	str = va_arg(argp, char *);
 	if (str == NULL)
 		str = "(null)";
-<<<<<<< HEAD
 	len = (((size_t)g_prec < ft_strlen(str) && g_prec != 0) || g_prec == 0) ?
 	g_prec : ft_strlen(str);
-=======
-	len = ((g_prec < (int)ft_strlen(str) && g_prec != 0) || g_prec == 0) ?
-	g_prec : (int)ft_strlen(str);
->>>>>>> b31d43f6c3983777719643f6e056937742afbd7a
 	if (g_width > 0)
 		nbr_space = (g_width > len) ? g_width - len : 0;
 	else if (g_width < 0)
